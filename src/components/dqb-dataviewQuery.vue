@@ -24,3 +24,12 @@ export default {
     <div>```</div>
   </div>
 </template>
+
+<style scoped lang="scss">
+@import "src/assets/mixins.scss";
+.dataview-query {
+  margin-top: 2em;
+
+  @include box;
+}
+</style>

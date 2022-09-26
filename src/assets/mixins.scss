@@ -1,0 +1,5 @@
+@mixin box {
+  background-color: var(--color-boxes);
+  border-radius: 5px;
+  padding: 1em;
+}

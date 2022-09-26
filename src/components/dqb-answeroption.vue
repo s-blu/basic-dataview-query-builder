@@ -7,5 +7,12 @@ export default {
 </script>
 
 <template>
-  <div class="answer">{{ answer.label }}</div>
+  <div class="answer button">{{ answer.label }}</div>
 </template>
+
+<style lang="scss">
+.answer {
+  margin: 4px;
+  min-width: 200px;
+}
+</style>
