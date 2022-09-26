@@ -10,6 +10,8 @@ import { RouterLink, RouterView } from "vue-router";
 
 <style scoped lang="scss">
 main {
-  width: 100%;
+  min-width: 1024px;
+  width: 1496px;
+  margin: auto;
 }
 </style>
