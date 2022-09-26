@@ -25,7 +25,9 @@ export default {};
 </template>
 
 <style scoped lang="scss">
+@import "src/assets/mixins.scss";
 .app-title {
   text-align: center;
+  @include heading;
 }
 </style>

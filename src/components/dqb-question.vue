@@ -42,12 +42,8 @@ export default {
   font-size: 16pt;
 
   .header {
-    text-transform: uppercase;
-    font-weight: bolder;
-    font-size: 12pt;
+    @include heading;
     padding-bottom: 0.5em;
-
-    color: var(--color-text-hint);
   }
 }
 </style>

@@ -3,3 +3,10 @@
   border-radius: 5px;
   padding: 1em;
 }
+
+@mixin heading {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 12pt;
+  color: var(--color-text-hint);
+}

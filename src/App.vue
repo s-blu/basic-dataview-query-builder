@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from "vue-router";
 <style scoped lang="scss">
 main {
   min-width: 1024px;
-  width: 1496px;
+  width: 1248px;
   margin: auto;
 }
 </style>
