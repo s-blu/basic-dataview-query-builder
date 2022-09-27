@@ -8,7 +8,13 @@ class QuestionsService {
   }
 
   getQueryParts() {
-    return this.questions.map((q) => q.selected.dataview);
+    return this.questions
+      .filter((q) => q.selected)
+      .map((q) => q.selected.dataview);
+  }
+
+  get questionLength() {
+    return this.questions.length;
   }
 }
 
