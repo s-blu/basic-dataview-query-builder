@@ -1,17 +1,14 @@
 <script lang="ts">
-import questionService from "@/services/question.service";
+import { useQuestionsStore } from "@/stores/questions.store";
+import { mapState } from "pinia";
 import DqbAnsweroption from "./dqb-answeroption.vue";
 
 export default {
   components: { DqbAnsweroption },
-  data: function () {
-    return {
-      qService: questionService,
-    };
-  },
   computed: {
+    ...mapState(useQuestionsStore, ["questions"]),
     question() {
-      return this.qService.questions[this.$route.params.id];
+      return this.questions[this.$route.params.id];
     },
   },
   methods: {
@@ -20,7 +17,6 @@ export default {
       this.question.selected = {
         dataview: answer.dataview,
       };
-      this.$root.$emit('question-change')
     },
   },
 };
