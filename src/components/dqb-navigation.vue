@@ -16,7 +16,6 @@ export default {
     },
     previous() {
       const currentIndex = Number(this.$route.params.id);
-      console.log("calc prev", currentIndex, currentIndex === 0);
       return currentIndex === 0 ? "" : `/question/${currentIndex - 1}`;
     },
   },

@@ -9,7 +9,8 @@ export default {
   },
   computed: {
     queryParts() {
-      return this.qService.getQueryParts();
+      console.log("query parts update", this.qService.queryParts);
+      return this.qService.queryParts;
     },
   },
 };

@@ -3,6 +3,7 @@ import questionService from "@/services/question.service";
 import DqbAnsweroption from "./dqb-answeroption.vue";
 
 export default {
+  components: { DqbAnsweroption },
   data: function () {
     return {
       qService: questionService,
@@ -13,7 +14,15 @@ export default {
       return this.qService.questions[this.$route.params.id];
     },
   },
-  components: { DqbAnsweroption },
+  methods: {
+    selectAnswer(answer) {
+      console.log("jup", answer);
+      this.question.selected = {
+        dataview: answer.dataview,
+      };
+      this.$root.$emit('question-change')
+    },
+  },
 };
 </script>
 
@@ -29,7 +38,10 @@ export default {
         v-for="(answer, index) in question.answers"
         :key="index"
       >
-        <DqbAnsweroption :answer="answer"></DqbAnsweroption>
+        <DqbAnsweroption
+          :answer="answer"
+          @selected="selectAnswer(answer)"
+        ></DqbAnsweroption>
       </div>
     </div>
   </div>
