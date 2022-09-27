@@ -33,6 +33,7 @@ main {
     @include heading;
   }
 }
+
 .start-btn {
   display: block;
   margin: auto;
