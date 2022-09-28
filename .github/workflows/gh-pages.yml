@@ -18,7 +18,7 @@ jobs:
       - name: Install and build project
         run: |
           npm install
-          npm run build
+          npm run build-only
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
         env:
