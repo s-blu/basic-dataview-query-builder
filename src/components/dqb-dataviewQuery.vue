@@ -1,17 +1,10 @@
 <script lang="ts">
-import questionService from "@/services/question.service";
+import { useQuestionsStore } from "@/stores/questions.store";
+import { mapState } from "pinia";
 
 export default {
-  data: function () {
-    return {
-      qService: questionService,
-    };
-  },
   computed: {
-    queryParts() {
-      console.log("query parts update", this.qService.queryParts);
-      return this.qService.queryParts;
-    },
+    ...mapState(useQuestionsStore, ["queryParts"]),
   },
 };
 </script>

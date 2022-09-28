@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { AnswerOption, Question } from "@/interfaces/question";
 import { useQuestionsStore } from "@/stores/questions.store";
 import { mapState } from "pinia";
 import DqbAnsweroption from "./dqb-answeroption.vue";
@@ -7,12 +8,12 @@ export default {
   components: { DqbAnsweroption },
   computed: {
     ...mapState(useQuestionsStore, ["questions"]),
-    question() {
+    question(): Question {
       return this.questions[this.$route.params.id];
     },
   },
   methods: {
-    selectAnswer(answer) {
+    selectAnswer(answer: AnswerOption) {
       console.log("jup", answer);
       this.question.selected = {
         dataview: answer.dataview,

@@ -1,27 +1,27 @@
 export interface Question {
-  question: String;
+  question: string;
   answers: Array<AnswerOption>;
   selected: SelectedAnswer;
 }
 
 export interface SelectedAnswer {
-  dataview: String;
+  dataview: string;
 
-  rawDataview?: String;
-  variables?: { [id: string]: String };
+  rawDataview?: string;
+  variables?: { [id: string]: string };
 }
 
 export interface AnswerOption {
-  label: String;
-  dataview: String;
+  label: string;
+  dataview: string;
 
   type?: "Input";
   inputs?: Array<AnswerInputs>;
 }
 
 export interface AnswerInputs {
-  label: String;
-  varname: String;
+  label: string;
+  varname: string;
 
-  preset?: String;
+  preset?: string;
 }

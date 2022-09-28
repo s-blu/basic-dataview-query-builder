@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import initalQuestions from "@/assets/questions.json";
+import type { Question } from "./../interfaces/question";
 
 export const useQuestionsStore = defineStore("questionsStore", {
   state: () => ({
-    questions: initalQuestions
+    questions: initalQuestions as Array<Question>,
   }),
   getters: {
     //questions: (state) => state.questions,
@@ -12,7 +13,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
     lastQuestionIndex: (state) => state.questions.length - 1,
   },
   actions: {
-    updateQuestion(index, question) {
+    updateQuestion(index: number, question: Question) {
       this.questions[index] = question;
     },
   },

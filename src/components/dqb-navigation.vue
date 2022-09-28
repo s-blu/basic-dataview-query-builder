@@ -1,21 +1,19 @@
 <script lang="ts">
-import questionService from "@/services/question.service";
+import { useQuestionsStore } from "@/stores/questions.store";
+import { mapState } from "pinia";
+
 
 export default {
-  data() {
-    return {
-      lastIndex: questionService.questionLength - 1,
-    };
-  },
   computed: {
+    ...mapState(useQuestionsStore, ["lastQuestionIndex"]),
     next() {
-      const currentIndex = Number(this.$route.params.id);
-      return currentIndex < this.lastIndex
+      const currentIndex: number = Number(this.$route.params.id);
+      return currentIndex < this.lastQuestionIndex
         ? `/question/${currentIndex + 1}`
         : "/result";
     },
     previous() {
-      const currentIndex = Number(this.$route.params.id);
+      const currentIndex: number = Number(this.$route.params.id);
       return currentIndex === 0 ? "" : `/question/${currentIndex - 1}`;
     },
   },
