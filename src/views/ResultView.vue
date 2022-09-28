@@ -60,7 +60,7 @@ export default {
         </div>
       </div>
     </div>
-    <router-link to="/" class="button is-primary start-btn"
+    <router-link to="/" class="button is-success start-btn"
       >Start a new questionnaire!</router-link
     >
   </main>
