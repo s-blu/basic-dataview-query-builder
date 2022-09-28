@@ -12,8 +12,8 @@ export default {
 <template>
   <div class="dataview-query">
     <div>```dataview</div>
-    <div v-for="(part, index) in queryParts" :key="index">
-      <div>{{ part }}</div>
+    <div class="querypart" v-for="(part, index) in queryParts" :key="index">
+      {{ part }}
     </div>
     <div>```</div>
   </div>
