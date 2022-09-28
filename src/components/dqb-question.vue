@@ -48,7 +48,7 @@ export default {
 @import "src/assets/mixins.scss";
 .questionblock {
   @include box;
-  font-size: 16pt;
+  font-size: var(--size-font-info);
 
   .header {
     @include heading;

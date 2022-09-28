@@ -12,9 +12,10 @@ export default {
   <main>
     <div class="result">
       <div class="result-msg">
-        <div class="header">Result</div>
+        <div class="header">Finished!</div>
         <div class="msg">
-          Thanks for taking the questionnaire! Your next steps:
+          Thanks for taking the questionnaire! Below is your query! Your next
+          steps:
           <ol class="next-steps">
             <li>
               Copy the query below - make sure to copy the whole block (with the
@@ -33,8 +34,16 @@ export default {
         </div>
       </div>
 
-      <DqbDataviewQuery></DqbDataviewQuery>
-      
+      <hr />
+      <div class="queryheading">
+        Your dataview Query! 🎉 Copy this into your vault ⬇ and follow the steps
+        above ⬆
+      </div>
+
+      <DqbDataviewQuery class="dataviewquery"></DqbDataviewQuery>
+
+      <hr />
+
       <div class="help">
         <div class="header">Need help?</div>
         <div class="msg">
@@ -78,8 +87,9 @@ main {
   }
 }
 
-.help {
-  margin-top: 1em;
+.queryheading {
+  @include heading;
+  margin-bottom: 0.5em;
 }
 
 .start-btn {

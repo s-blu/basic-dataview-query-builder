@@ -1,17 +1,26 @@
 <script lang="ts">
-  import Navigation from "../components/dqb-navigation.vue";
-  import Question from "../components/dqb-question.vue";
-  import DataviewQuery from "../components/dqb-dataviewQuery.vue";
-  
-  export default {
-    components: { Navigation, Question, DataviewQuery },
-  };
-  </script>
+import Navigation from "../components/dqb-navigation.vue";
+import Question from "../components/dqb-question.vue";
+import DataviewQuery from "../components/dqb-dataviewQuery.vue";
+
+export default {
+  components: { Navigation, Question, DataviewQuery },
+};
+</script>
 
 <template>
   <main>
     <Navigation></Navigation>
-    <Question :question="currentQuestion"></Question>
-    <DataviewQuery :query="query"></DataviewQuery>
+    <Question :question="currentQuestion" class="question"></Question>
+    <DataviewQuery :query="query" class="dataviewquery"></DataviewQuery>
   </main>
 </template>
+
+<style scoped lang="scss">
+.question {
+  margin: 0;
+}
+.dataviewquery {
+  margin: 1em 0;
+}
+</style>
