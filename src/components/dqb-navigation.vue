@@ -21,7 +21,7 @@ export default {
 
 <template>
   <nav class="navigation columns">
-    <div class="column is-narrow">
+    <div class="column is-2">
       <router-link :to="previous" class="button">
         <span class="icon">
           <i class="fa-solid fa-arrow-left"></i>
@@ -29,9 +29,11 @@ export default {
         <span>Previous</span>
       </router-link>
     </div>
-    <div class="app-title column is-centered">Basic Dataview Query Builder</div>
-    <div class="column is-narrow">
-      <router-link :to="next" class="button">
+    <div class="questionprogress column is-centered">
+      Question {{ Number($route.params.id) + 1 }} / {{ lastQuestionIndex + 1 }}
+    </div>
+    <div class="column is-2">
+      <router-link :to="next" class="button is-pulled-right">
         <span>{{ next === "/result" ? "Show result" : "Next" }}</span>
         <span class="icon">
           <i class="fa-solid fa-arrow-right"></i>
@@ -43,7 +45,7 @@ export default {
 
 <style scoped lang="scss">
 @import "src/assets/mixins.scss";
-.app-title {
+.questionprogress {
   text-align: center;
   @include heading;
 }

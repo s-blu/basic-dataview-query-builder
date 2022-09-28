@@ -14,7 +14,7 @@ If you find a bug, have a question or would like to see another feature, feel fr
 
 ## Development
 
-This page is based on a Vue 3 application built with Vite.
+This page is based on a Vue 3 application built with Vite, styled with [Bulma.io](https://bulma.io). 
 
 ### Recommended IDE Setup
 

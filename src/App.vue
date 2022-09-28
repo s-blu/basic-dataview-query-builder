@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import DqpHeader from "./components/dqp-header.vue";
 </script>
 
 <template>
   <main>
+    <DqpHeader></DqpHeader>
     <RouterView />
   </main>
 </template>
