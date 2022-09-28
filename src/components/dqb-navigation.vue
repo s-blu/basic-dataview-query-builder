@@ -2,7 +2,6 @@
 import { useQuestionsStore } from "@/stores/questions.store";
 import { mapState } from "pinia";
 
-
 export default {
   computed: {
     ...mapState(useQuestionsStore, ["lastQuestionIndex"]),
@@ -33,7 +32,7 @@ export default {
     <div class="app-title column is-centered">Basic Dataview Query Builder</div>
     <div class="column is-narrow">
       <router-link :to="next" class="button">
-        <span>Next</span>
+        <span>{{ next === "/result" ? "Show result" : "Next" }}</span>
         <span class="icon">
           <i class="fa-solid fa-arrow-right"></i>
         </span>

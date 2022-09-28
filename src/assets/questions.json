@@ -1,25 +1,5 @@
 [
   {
-    "question": "Howdo! Does this work?",
-    "answers": [
-      {
-        "label": "yes",
-        "dataview": "FROM yes"
-      },
-      {
-        "label": "no",
-        "dataview": "THROW ERR"
-      },
-      {
-        "label": "maybe",
-        "dataview": "From maybe OR yes OR no"
-      }
-    ],
-    "selected": {
-      "dataview": "blabla"
-    }
-  },
-  {
     "question": "In which form you want to see the results of your query?",
     "answers": [
       {
@@ -45,6 +25,62 @@
             "preset": "file.ctime"
           }
         ]
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "Do you want to query all notes in your vault or only some? What does these 'some' have in common?",
+    "answers": [
+      {
+        "label": "I want to query all notes",
+        "dataview": ""
+      },
+      {
+        "label": "I want to query some notes which have a tag",
+        "dataview": "FROM #{{tagName}}"
+      },
+      {
+        "label": "I want to query notes in a folder on root",
+        "dataview": "FROM \"{{folderName}}\""
+      },
+      {
+        "label": "I want to query notes in a subfolder",
+        "dataview": "FROM \"{{path/to/folderName}}\""
+      },
+      {
+        "label": "I want to query notes that are linking to my current note",
+        "dataview": "FROM [[]]"
+      },
+      {
+        "label": "I want to query notes my current note is linking to",
+        "dataview": "FROM outgoing([[]])"
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "Do you want to filter your notes further based on meta data?",
+    "answers": [
+      {
+        "label": "No, I want to see all notes my FROM is giving me",
+        "dataview": ""
+      },
+      {
+        "label": "I want to see only notes that have a meta data set",
+        "dataview": "WHERE {{nameOfMetadata}}"
+      },
+      {
+        "label": "I want to see only notes where my (single value) meta data has a certain value",
+        "dataview": "WHERE {{nameOfMetadata}} = {{value}}"
+      },
+      {
+        "label": "I want to see only notes where my (multi value) meta data contains a certain value",
+        "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})"
       }
     ],
     "selected": {
