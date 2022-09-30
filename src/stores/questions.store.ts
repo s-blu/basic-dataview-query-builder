@@ -10,7 +10,8 @@ export const useQuestionsStore = defineStore("questionsStore", {
     //questions: (state) => state.questions,
     queryParts: (state) =>
       state.questions.filter((q) => q.selected).map((q) => q.selected.dataview),
-    lastQuestionIndex: (state) => state.questions.length - 1,
+    questionsLength: (state) => state.questions.length,
+
   },
   actions: {
     updateQuestion(index: number, question: Question) {

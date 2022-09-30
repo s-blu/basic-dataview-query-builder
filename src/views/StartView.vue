@@ -14,7 +14,7 @@
         Click the button to start!
       </div>
     </div>
-    <router-link to="/question/0" class="button is-success is-large start-btn"
+    <router-link to="/question/1" class="button is-success is-large start-btn"
       >START!</router-link
     >
     <hr />

@@ -11,8 +11,8 @@ export default {
 <template>
   <main>
     <Navigation></Navigation>
-    <Question :question="currentQuestion" class="question"></Question>
-    <DataviewQuery :query="query" class="dataviewquery"></DataviewQuery>
+    <Question class="question"></Question>
+    <DataviewQuery class="dataviewquery"></DataviewQuery>
   </main>
 </template>
 

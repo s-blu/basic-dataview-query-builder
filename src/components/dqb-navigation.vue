@@ -4,16 +4,16 @@ import { mapState } from "pinia";
 
 export default {
   computed: {
-    ...mapState(useQuestionsStore, ["lastQuestionIndex"]),
+    ...mapState(useQuestionsStore, ["questionsLength"]),
     next() {
       const currentIndex: number = Number(this.$route.params.id);
-      return currentIndex < this.lastQuestionIndex
+      return currentIndex < this.questionsLength
         ? `/question/${currentIndex + 1}`
         : "/result";
     },
     previous() {
       const currentIndex: number = Number(this.$route.params.id);
-      return currentIndex === 0 ? "" : `/question/${currentIndex - 1}`;
+      return currentIndex === 1 ? "" : `/question/${currentIndex - 1}`;
     },
   },
 };
@@ -30,7 +30,7 @@ export default {
       </router-link>
     </div>
     <div class="questionprogress column is-centered">
-      Question {{ Number($route.params.id) + 1 }} / {{ lastQuestionIndex + 1 }}
+      Question {{ Number($route.params.id) }} / {{ questionsLength }}
     </div>
     <div class="column is-2">
       <router-link :to="next" class="button is-pulled-right">

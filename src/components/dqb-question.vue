@@ -9,7 +9,7 @@ export default {
   computed: {
     ...mapState(useQuestionsStore, ["questions"]),
     question(): Question {
-      return this.questions[this.$route.params.id];
+      return this.questions[this.$route.params.id - 1];
     },
   },
   methods: {
