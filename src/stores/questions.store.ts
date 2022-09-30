@@ -11,7 +11,13 @@ export const useQuestionsStore = defineStore("questionsStore", {
     queryParts: (state) =>
       state.questions.filter((q) => q.selected).map((q) => q.selected.dataview),
     questionsLength: (state) => state.questions.length,
-
+    computedQuery: (state) =>
+      state.questions
+        .filter((q) => q.selected?.dataview)
+        .reduce(
+          (acc, curr) => `${acc}${acc ? "\n" : ""}${curr.selected.dataview}`,
+          ""
+        ),
   },
   actions: {
     updateQuestion(index: number, question: Question) {

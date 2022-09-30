@@ -41,3 +41,11 @@ body {
 
   font-weight: normal;
 }
+
+.button.is-ghost {
+  color: var(--color-text-hint);
+}
+.button.is-ghost:hover {
+  text-decoration: none;
+  color: var(--color-text-hint-hover);
+}

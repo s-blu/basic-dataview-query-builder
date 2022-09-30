@@ -4,18 +4,31 @@ import { mapState } from "pinia";
 
 export default {
   computed: {
-    ...mapState(useQuestionsStore, ["queryParts"]),
+    ...mapState(useQuestionsStore, ["queryParts", "computedQuery"]),
+    queryString() {
+      return `\`\`\`dataview
+${this.computedQuery}
+\`\`\``;
+    },
+  },
+  methods: {
+    copyQuery() {
+      navigator.clipboard.writeText(this.queryString);
+    },
   },
 };
 </script>
 
 <template>
   <div class="dataview-query">
-    <div class="dv-codeblock">```dataview</div>
-    <div class="querypart" v-for="(part, index) in queryParts" :key="index">
-      {{ part }}
-    </div>
-    <div class="dv-codeblock">```</div>
+    <button
+      class="button is-ghost copybtn"
+      title="Copy Query"
+      @click="copyQuery()"
+    >
+      <span class="icon"> <i class="fa-regular fa-copy"></i></span>
+    </button>
+    <pre class="dataview">{{ queryString }}</pre>
   </div>
 </template>
 
@@ -29,5 +42,16 @@ export default {
   @include box;
   padding: 0 16px;
   background-color: #baccde;
+
+  .dataview {
+    background-color: unset;
+    padding: 0;
+    color: inherit;
+  }
+}
+button.copybtn.is-ghost {
+  float: right;
+  right: -12px;
+  top: 4px;
 }
 </style>

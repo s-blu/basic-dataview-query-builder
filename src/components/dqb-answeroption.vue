@@ -47,6 +47,10 @@ export default {
   &.multi {
     border-radius: 2px;
   }
+
+  &.icon {
+    color: var(--color-text-hint);
+  }
 }
 
 .answer {
@@ -65,14 +69,5 @@ export default {
   padding: 0.5em;
   padding-right: 0;
   cursor: pointer;
-}
-
-.readmore-btn.button.is-ghost {
-  color: var(--color-text-hint);
-
-  &:hover {
-    text-decoration: none;
-    color: var(--color-text-hint-hover);
-  }
 }
 </style>
