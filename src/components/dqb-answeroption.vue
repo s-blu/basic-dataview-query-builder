@@ -42,6 +42,7 @@ export default {
 .answer-select {
   border: 2px solid var(--color-text-hint);
   border-radius: 50%;
+  cursor: pointer;
 
   &.multi {
     border-radius: 2px;
@@ -61,7 +62,9 @@ export default {
 }
 
 .answerlabel {
-  padding-left: 0.5em;
+  padding: 0.5em;
+  padding-right: 0;
+  cursor: pointer;
 }
 
 .readmore-btn.button.is-ghost {
