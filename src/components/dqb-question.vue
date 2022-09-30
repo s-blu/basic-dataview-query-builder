@@ -31,7 +31,7 @@ export default {
     </div>
     <div class="answerblock column is-half">
       <div class="header">
-        {{ question.multiselect ? "Choose multiple" : "Choose one" }}
+        {{ question.multiselect ? "Choose one or multiple" : "Choose one" }}
       </div>
       <div
         class="answers"

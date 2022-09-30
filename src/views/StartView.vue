@@ -29,7 +29,7 @@
         To make your start into dataview a tad more easier, the Basic Dataview
         Query Builder (this very webpage) allows you to click together your
         first queries that'll help you understand the syntax of the plugin and
-        guide you through the different pieces of informations needed to build a
+        guide you through the different pieces of information needed to build a
         useable query. <br />
         <br />
 

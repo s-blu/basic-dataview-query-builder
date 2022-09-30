@@ -55,8 +55,7 @@ export default {
             >example vault</a
           >
           can help or head over to the
-          <a href="https://obsidian.md/community">Obsidian community</a> to find
-          some help.
+          <a href="https://obsidian.md/community">Obsidian community</a> for support.
         </div>
       </div>
     </div>
