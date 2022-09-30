@@ -13,9 +13,9 @@ export default {
     },
   },
   methods: {
-    selectAnswer(answer: AnswerOption) {
-      console.log("jup", answer);
+    selectAnswer(answer: AnswerOption, index: number) {
       this.question.selected = {
+        index: index,
         dataview: answer.dataview,
       };
     },
@@ -30,6 +30,9 @@ export default {
       <div class="question">{{ question.question }}</div>
     </div>
     <div class="answerblock column is-half">
+      <div class="header">
+        {{ question.multiselect ? "Choose multiple" : "Choose one" }}
+      </div>
       <div
         class="answers"
         v-for="(answer, index) in question.answers"
@@ -37,7 +40,10 @@ export default {
       >
         <DqbAnsweroption
           :answer="answer"
-          @selected="selectAnswer(answer)"
+          :index="index"
+          :isSelected="question.selected.index === index"
+          :isMultiselect="question.multiselect"
+          @selected="selectAnswer(answer, index)"
         ></DqbAnsweroption>
       </div>
     </div>
@@ -49,10 +55,13 @@ export default {
 .questionblock {
   @include box;
   font-size: var(--size-font-info);
+}
+.header {
+  @include heading;
+  padding-bottom: 0.5em;
+}
 
-  .header {
-    @include heading;
-    padding-bottom: 0.5em;
-  }
+.answerblock {
+  padding-top: 0;
 }
 </style>

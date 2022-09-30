@@ -4,20 +4,24 @@
     "answers": [
       {
         "label": "I want to have a LIST of file links matching my query",
-        "dataview": "LIST"
+        "dataview": "LIST",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
       },
       {
         "label": "I want to have a TABLE that presents my result file links and additional data for each hit",
-        "dataview": "TABLE"
+        "dataview": "TABLE",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#table-queries"
       },
       {
         "label": "I want to search and find TASKs",
-        "dataview": "TASK"
+        "dataview": "TASK",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#task-queries"
       },
       {
         "type": "input",
         "label": "I want to see a CALENDAR which indicates each hit with a dot",
         "dataview": "CALENDAR {{datefield}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
         "inputs": [
           {
             "label": "Each of your pages need to have a date field, otherwise the CALENDAR won't render. Which date field should be used?",
@@ -40,23 +44,28 @@
       },
       {
         "label": "I want to query some notes which have a tag",
-        "dataview": "FROM #{{tagName}}"
+        "dataview": "FROM #{{tagName}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
         "label": "I want to query notes in a folder on root",
-        "dataview": "FROM \"{{folderName}}\""
+        "dataview": "FROM \"{{folderName}}\"",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
         "label": "I want to query notes in a subfolder",
-        "dataview": "FROM \"{{path/to/folderName}}\""
+        "dataview": "FROM \"{{path/to/folderName}}\"",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
         "label": "I want to query notes that are linking to my current note",
-        "dataview": "FROM [[]]"
+        "dataview": "FROM [[]]",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
         "label": "I want to query notes my current note is linking to",
-        "dataview": "FROM outgoing([[]])"
+        "dataview": "FROM outgoing([[]])",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       }
     ],
     "selected": {
@@ -72,15 +81,18 @@
       },
       {
         "label": "I want to see only notes that have a meta data set",
-        "dataview": "WHERE {{nameOfMetadata}}"
+        "dataview": "WHERE {{nameOfMetadata}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where"
       },
       {
         "label": "I want to see only notes where my (single value) meta data has a certain value",
-        "dataview": "WHERE {{nameOfMetadata}} = {{value}}"
+        "dataview": "WHERE {{nameOfMetadata}} = {{value}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where"
       },
       {
         "label": "I want to see only notes where my (multi value) meta data contains a certain value",
-        "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})"
+        "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value"
       }
     ],
     "selected": {
