@@ -7,7 +7,6 @@ export const useQuestionsStore = defineStore("questionsStore", {
     questions: initalQuestions as Array<Question>,
   }),
   getters: {
-    //questions: (state) => state.questions,
     queryParts: (state) =>
       state.questions.filter((q) => q.selected).map((q) => q.selected.dataview),
     questionsLength: (state) => state.questions.length,
@@ -20,8 +19,8 @@ export const useQuestionsStore = defineStore("questionsStore", {
         ),
   },
   actions: {
-    updateQuestion(index: number, question: Question) {
-      this.questions[index] = question;
+    resetSelectedAnswers() {
+      this.questions.forEach((q) => (q.selected = { dataview: "" }));
     },
   },
 });

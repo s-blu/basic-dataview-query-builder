@@ -1,9 +1,18 @@
 <script lang="ts">
+import { useQuestionsStore } from "@/stores/questions.store";
+import { mapActions } from "pinia";
 import DqbDataviewQuery from "../components/dqb-dataviewQuery.vue";
 
 export default {
   components: {
     DqbDataviewQuery,
+  },
+  methods: {
+    ...mapActions(useQuestionsStore, ["resetSelectedAnswers"]),
+    startNew() {
+      this.resetSelectedAnswers();
+      this.$router.push("/");
+    },
   },
 };
 </script>
@@ -55,13 +64,14 @@ export default {
             >example vault</a
           >
           can help or head over to the
-          <a href="https://obsidian.md/community">Obsidian community</a> for support.
+          <a href="https://obsidian.md/community">Obsidian community</a> for
+          support.
         </div>
       </div>
     </div>
-    <router-link to="/" class="button is-success start-btn"
-      >Start a new questionnaire!</router-link
-    >
+    <button @click="startNew()" class="button is-success start-btn">
+      Start a new questionnaire!
+    </button>
   </main>
 </template>
 
