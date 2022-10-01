@@ -11,8 +11,6 @@ import DqpHeader from "./components/dqb-header.vue";
 </template>
 
 <style scoped lang="scss">
-@import "@/assets/bulma.scss";
-
 main {
   min-width: 1024px;
   width: 1248px;
