@@ -1,11 +1,13 @@
 @import "bulma/css/bulma.css";
 @import "@fortawesome/fontawesome-free/css/fontawesome.css";
 @import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
 
 :root {
   --color-background: #fff;
   --color-boxes: #e6ebf0;
   --color-text: #2c3e50;
+  --color-text-interactive: #00b3b7;
   --color-text-hint: #507192;
   --color-text-hint-hover: #67a2dd;
   --size-font-info: 14pt;
@@ -48,4 +50,8 @@ body {
 .button.is-ghost:hover {
   text-decoration: none;
   color: var(--color-text-hint-hover);
+}
+
+a {
+  color: var(--color-text-interactive);
 }
