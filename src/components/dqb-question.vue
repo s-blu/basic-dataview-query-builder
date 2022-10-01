@@ -3,9 +3,10 @@ import type { AnswerOption, Question } from "@/interfaces/question";
 import { useQuestionsStore } from "@/stores/questions.store";
 import { mapState } from "pinia";
 import DqbAnsweroption from "./dqb-answeroption.vue";
+import DqbAnsweroptionExtras from "./dqb-answeroption-extras.vue";
 
 export default {
-  components: { DqbAnsweroption },
+  components: { DqbAnsweroption, DqbAnsweroptionExtras },
   computed: {
     ...mapState(useQuestionsStore, ["questions"]),
     question(): Question {
@@ -16,6 +17,7 @@ export default {
     selectAnswer(answer: AnswerOption, index: number) {
       this.question.selected = {
         index: index,
+        answer: answer,
         dataview: answer.dataview,
       };
     },
@@ -46,6 +48,17 @@ export default {
           @selected="selectAnswer(answer, index)"
         ></DqbAnsweroption>
       </div>
+    </div>
+  </div>
+  <div class="columns">
+    <div
+      class="answeroption-extras column is-full"
+      v-if="question.selected?.index"
+    >
+      <DqbAnsweroptionExtras
+        :question="question"
+        :answer="question.answers[question.selected.index]"
+      ></DqbAnsweroptionExtras>
     </div>
   </div>
 </template>

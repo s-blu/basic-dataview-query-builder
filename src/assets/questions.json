@@ -20,10 +20,11 @@
       {
         "type": "input",
         "label": "I want to see a CALENDAR which indicates each hit with a dot",
-        "dataview": "CALENDAR {{datefield}}",
+        "dataview": "CALENDAR {{datefield}} AND {{some}} TEST",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
-        "inputs": [
+        "extras": [
           {
+            "type": "input",
             "label": "Each of your pages need to have a date field, otherwise the CALENDAR won't render. Which date field should be used?",
             "varname": "datefield",
             "preset": "file.ctime"

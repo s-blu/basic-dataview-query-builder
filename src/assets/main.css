@@ -49,7 +49,7 @@ body {
 }
 .button.is-ghost:hover {
   text-decoration: none;
-  color: var(--color-text-hint-hover);
+  color: var(--color-text-interactive);
 }
 
 a {

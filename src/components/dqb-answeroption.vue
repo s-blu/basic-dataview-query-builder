@@ -38,7 +38,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .answer-select {
   border: 2px solid var(--color-text-hint);
   border-radius: 50%;
