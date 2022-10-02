@@ -43,6 +43,7 @@ export default {
   border: 2px solid var(--color-text-hint);
   border-radius: 50%;
   cursor: pointer;
+  min-width: 24px;
 
   &.multi {
     border-radius: 2px;
