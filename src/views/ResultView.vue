@@ -2,12 +2,10 @@
 import { useQuestionsStore } from "@/stores/questions.store";
 import { mapActions } from "pinia";
 import DqbDataviewQuery from "../components/dqb-dataviewQuery.vue";
-import DqbFooter from "../components/dqb-footer.vue";
 
 export default {
   components: {
     DqbDataviewQuery,
-    DqbFooter,
   },
   methods: {
     ...mapActions(useQuestionsStore, ["resetSelectedAnswers"]),
@@ -74,7 +72,6 @@ export default {
     <button @click="startNew()" class="button is-success start-btn">
       Start a new questionnaire!
     </button>
-    <DqbFooter></DqbFooter>
   </main>
 </template>
 

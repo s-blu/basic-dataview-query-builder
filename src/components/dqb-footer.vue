@@ -29,7 +29,6 @@ export default {
 
 <style scoped lang="scss">
 .app-footer {
-  margin-top: 2em;
   padding: 0.5em;
   color: var(--color-text-hint);
   border-top: 1px solid var(--color-boxes);

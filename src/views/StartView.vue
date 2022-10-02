@@ -1,11 +1,6 @@
 <script lang="ts">
-import DqbFooter from "../components/dqb-footer.vue";
 
-export default {
-  components: {
-    DqbFooter,
-  },
-};
+
 </script>
 
 <template>
@@ -52,8 +47,7 @@ export default {
           >github repository</a
         >.
       </div>
-    </div>
-    <DqbFooter></DqbFooter>
+    </div>   
   </main>
 </template>
 

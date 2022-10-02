@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import DqpHeader from "./components/dqb-header.vue";
+import DqbFooter from "./components/dqb-footer.vue";
 </script>
 
 <template>
@@ -8,12 +9,17 @@ import DqpHeader from "./components/dqb-header.vue";
   <main>
     <RouterView />
   </main>
+  <DqbFooter></DqbFooter>
 </template>
 
 <style scoped lang="scss">
-main {
-  min-width: 1024px;
-  width: 1248px;
+main,
+.app-footer {
+  max-width: 960px;
   margin: auto;
+}
+
+.app-footer {
+  margin-top: 2em;
 }
 </style>

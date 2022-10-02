@@ -5,7 +5,7 @@ import DataviewQuery from "../components/dqb-dataviewQuery.vue";
 import DqbFooter from "../components/dqb-footer.vue";
 
 export default {
-  components: { Navigation, Question, DataviewQuery, DqbFooter },
+  components: { Navigation, Question, DataviewQuery },
 };
 </script>
 
@@ -15,7 +15,6 @@ export default {
     <Question class="question"></Question>
     <DataviewQuery class="dataviewquery"></DataviewQuery>
   </main>
-  <DqbFooter></DqbFooter>
 </template>
 
 <style scoped lang="scss">

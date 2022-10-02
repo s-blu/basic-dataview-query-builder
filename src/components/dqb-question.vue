@@ -23,14 +23,14 @@ export default {
 </script>
 
 <template>
-  <div class="columns">
-    <div class="column is-half">
+  <div class="columns is-multiline">
+    <div class="column is-full">
       <div class="questionblock">
         <div class="header">Question</div>
         <div class="question">{{ question.question }}</div>
       </div>
     </div>
-    <div class="answerblock column is-half">
+    <div class="answerblock column is-full">
       <div class="header">
         {{ question.multiselect ? "Choose one or multiple" : "Choose one" }}
       </div>
