@@ -55,3 +55,14 @@ body {
 a {
   color: var(--color-text-interactive);
 }
+
+.message .message-header {
+  background-color: var(--color-text-hint);
+}
+.message {
+  background-color: var(--color-boxes);
+}
+
+.message .message-body {
+  border-color: var(--color-text-hint);
+}

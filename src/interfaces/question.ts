@@ -1,11 +1,12 @@
 export interface Question {
   question: string;
   answers: Array<AnswerOption>;
-  selected: SelectedAnswer;
+  selected?: SelectedAnswer;
 }
 
 export interface SelectedAnswer {
   dataview: string;
+  index: number;
 
   rawDataview?: string;
   variables?: { [id: string]: string };

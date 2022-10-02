@@ -24,12 +24,20 @@ export default {
 </script>
 
 <template>
-  <div class="answer-extra-input field">
-    <div class="label">
-      {{ input.label }}
+  <div class="field is-horizontal">
+    <div class="field-label">
+      <label class="label">{{ input.label }}</label>
     </div>
-    <div class="control">
-      <input class="input" v-model.trim="inputval" :placeholder="input.varname"/>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <input
+            class="input"
+            v-model.trim="inputval"
+            :placeholder="input.varname"
+          />
+        </p>
+      </div>
     </div>
   </div>
 </template>

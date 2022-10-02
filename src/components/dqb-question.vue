@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { AnswerOption, Question } from "@/interfaces/question";
 import { useQuestionsStore } from "@/stores/questions.store";
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 import DqbAnsweroption from "./dqb-answeroption.vue";
 import DqbAnsweroptionExtras from "./dqb-answeroption-extras.vue";
 
@@ -14,12 +14,9 @@ export default {
     },
   },
   methods: {
+    ...mapActions(useQuestionsStore, ["setSelected"]),
     selectAnswer(answer: AnswerOption, index: number) {
-      this.question.selected = {
-        index: index,
-        answer: answer,
-        dataview: answer.dataview,
-      };
+      this.setSelected(this.question, index, answer);
     },
   },
 };
@@ -43,7 +40,7 @@ export default {
         <DqbAnsweroption
           :answer="answer"
           :index="index"
-          :isSelected="question.selected.index === index"
+          :isSelected="question.selected?.index === index"
           :isMultiselect="question.multiselect"
           @selected="selectAnswer(answer, index)"
         ></DqbAnsweroption>
@@ -51,13 +48,11 @@ export default {
     </div>
   </div>
   <div class="columns">
-    <div
-      class="answeroption-extras column is-full"
-      v-if="question.selected?.index"
-    >
+    <div class="answeroption-extras column is-full">
       <DqbAnsweroptionExtras
+        v-if="question.selected?.index"
         :question="question"
-        :answer="question.answers[question.selected.index]"
+        :answer="question.answers[question.selected?.index]"
       ></DqbAnsweroptionExtras>
     </div>
   </div>

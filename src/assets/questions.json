@@ -24,17 +24,17 @@
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
         "extras": [
           {
+            "type": "hint",
+            "message": "Each page that should be displayed with a CALENDAR view needs a valid date meta data field. Otherwise, the query won't render. Good picks are i.e. file.ctime or file.mtime. The date meta data field determines on which day the note gets displayed."
+          },
+          {
             "type": "input",
-            "label": "Each of your pages need to have a date field, otherwise the CALENDAR won't render. Which date field should be used?",
-            "varname": "datefield",
-            "preset": "file.ctime"
+            "label": "Which date field should be used?",
+            "varname": "datefield"
           }
         ]
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "Do you want to query all notes in your vault or just those from a particular folder/tag/link?",
@@ -78,10 +78,7 @@
         "dataview": "FROM outgoing([[{{NoteName}}]])",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "Do you want to refine your results further based on one of your metadata fields?",
@@ -105,10 +102,7 @@
         "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "Do you want one result per note, or a separate result for each bullet/task/element in your notes?",
@@ -147,10 +141,7 @@
         "dataview": "FLATTEN {{nameOfField}} AS flatField \nWHERE contains(flatField, {{value}})",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "Do you want similar results grouped together based on one of their metadata values?",
@@ -174,10 +165,7 @@
         "dataview": "GROUP BY {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "How do you want the results sorted?",
@@ -201,10 +189,7 @@
         "dataview": "SORT {{nameOfField}} desc",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#sort"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   },
   {
     "question": "Do you want every result, or just the first few matches?",
@@ -218,9 +203,6 @@
         "dataview": "Limit {{numberOfResults}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#limit"
       }
-    ],
-    "selected": {
-      "dataview": ""
-    }
+    ]
   }
 ]
