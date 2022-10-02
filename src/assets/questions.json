@@ -344,7 +344,7 @@
       },
       {
         "label": "Just the first few matching results",
-        "dataview": "Limit {{numberOfResults}}",
+        "dataview": "LIMIT {{numberOfResults}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#limit",
         "extras": [
           {

@@ -7,6 +7,7 @@ export interface Question {
 export interface SelectedAnswer {
   dataview: string;
   index: number;
+  answer: AnswerOption;
 
   rawDataview?: string;
   variables?: { [id: string]: string };

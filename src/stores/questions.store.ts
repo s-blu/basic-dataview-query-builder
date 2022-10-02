@@ -1,7 +1,10 @@
 import { defineStore } from "pinia";
 import initalQuestions from "@/assets/questions.json";
 import type { AnswerOption, Question } from "./../interfaces/question";
-import { replacePlaceholdersInQueryString } from "@/utilities/dataviewQuery.utility";
+import {
+  replacePlaceholdersInQueryString,
+  handleGroupByCommand,
+} from "@/utilities/dataviewQuery.utility";
 
 export const useQuestionsStore = defineStore("questionsStore", {
   state: () => ({
@@ -13,14 +16,18 @@ export const useQuestionsStore = defineStore("questionsStore", {
         .filter((q) => q.selected?.dataview)
         .map((q) => q.selected?.dataview),
     questionsLength: (state) => state.questions.length,
-    computedQuery: (state) =>
-      state.questions
+    computedQuery: (state) => {
+      const queryParts = state.questions
         .filter((q) => q.selected?.dataview)
-        .map((q) => replacePlaceholdersInQueryString(q))
-        .reduce(
-          (acc, curr) => `${acc}${acc ? "\n" : ""}${curr.selected?.dataview}`,
-          ""
-        ),
+        .map((q) => replacePlaceholdersInQueryString(q));
+
+      handleGroupByCommand(queryParts);
+
+      return queryParts.reduce(
+        (acc, curr) => `${acc}${acc ? "\n" : ""}${curr.selected?.dataview}`,
+        ""
+      );
+    },
   },
   actions: {
     resetSelectedAnswers() {
@@ -29,6 +36,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
     setSelected(question: Question, index: any, answer: AnswerOption) {
       question.selected = {
         index: index,
+        answer: answer,
         dataview: answer.dataview,
         rawDataview: answer.dataview,
       };
