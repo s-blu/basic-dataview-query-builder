@@ -24,9 +24,11 @@ export default {
 
 <template>
   <div class="columns">
-    <div class="questionblock column is-half">
-      <div class="header">Question</div>
-      <div class="question">{{ question.question }}</div>
+    <div class="column is-half">
+      <div class="questionblock">
+        <div class="header">Question</div>
+        <div class="question">{{ question.question }}</div>
+      </div>
     </div>
     <div class="answerblock column is-half">
       <div class="header">
@@ -60,8 +62,10 @@ export default {
 
 <style scoped lang="scss">
 @import "src/assets/mixins.scss";
+
 .questionblock {
   @include box;
+  height: 100%;
   font-size: var(--size-font-info);
 }
 .header {
