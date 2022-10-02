@@ -25,6 +25,7 @@ export default {
       <AnswerExtraInput
         v-if="extra.type === 'input'"
         :input="extra"
+        :variablemap="question.selected?.variables"
         @updateExtra="updateExtra"
       ></AnswerExtraInput>
       <AnswerExtraHint

@@ -2,10 +2,13 @@
 export default {
   props: {
     input: Object,
+    variablemap: Object,
   },
   data() {
     return {
-      inputval: this.input.preset ?? "",
+      inputval: this.variablemap
+        ? this.variablemap[this.input.varname] ?? ""
+        : "",
     };
   },
   methods: {
