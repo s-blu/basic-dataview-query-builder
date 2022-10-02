@@ -19,42 +19,43 @@ export function replacePlaceholdersInQueryString(question: Question) {
   return question;
 }
 
-export function handleGroupByCommand(questions) {
+export function handleGroupByCommand(questions: Array<Question>) {
   let groupByIndex;
-  console.log("hello!");
 
-  questions.forEach((q, index) => {
-    console.log(q.selected.dataview.includes("GROUP BY"), q.selected.dataview);
+  questions.forEach((q: Question, index: number) => {
     if (q.selected.dataview.includes("GROUP BY")) groupByIndex = index;
   });
-  console.log(groupByIndex);
 
-  if (groupByIndex) {
-    // is always the query type (LIST/TABLE etc.) and gets executed last, alas needs the prefix
-    _prependRows(questions[0]);
+  if (!groupByIndex) {
+    return;
+  }
 
-    for (let i = groupByIndex + 1; i < questions.length; i++) {
-      _prependRows(questions[i]);
-    }
+  // 0 is always the query type (LIST/TABLE etc.) and gets executed last, alas needs the prefix
+  _prependRows(questions[0]);
+
+  // only commands after the group by need the rows. prefix
+  for (let i = groupByIndex + 1; i < questions.length; i++) {
+    _prependRows(questions[i]);
   }
 
   function _prependRows(question: Question) {
+    // in case of multiple meta data fields, split by ,
     const parts = question.selected.dataview.split(",");
     const querytypeOrDataCmd = parts[0].split(" ")[0];
+    parts[0] = parts[0].replace(querytypeOrDataCmd, "");
 
+    // Hacky workaround: Don't append on LIMIT numbers. Need to think of something more general here.
     if (querytypeOrDataCmd === "LIMIT") return;
-    parts[0] = parts[0].replace(parts[0].split(" ")[0], "");
-    console.log(parts);
 
-    let groupedQuery = [];
+    const groupedQuery = [];
     for (let i = 0; i < parts.length; i++) {
-      const prefix = parts[i].trim().startsWith("rows.") ? "" : "rows.";
-      groupedQuery.push(prefix + parts[i].trim());
+      parts[i] = parts[i].trim();
+      const prefix = parts[i] && !parts[i].startsWith("rows.") ? "rows." : "";
+      groupedQuery.push(prefix + parts[i]);
     }
-    console.log(groupedQuery);
+
     question.selected.dataview =
       querytypeOrDataCmd +
       groupedQuery.reduce((acc, curr) => `${acc}${acc ? "," : ""} ${curr}`, "");
-    console.log(question.selected.dataview);
   }
 }

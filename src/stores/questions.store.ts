@@ -56,7 +56,6 @@ export const useQuestionsStore = defineStore("questionsStore", {
         question.selected.variables = {};
       }
       question.selected.variables[variableName] = value;
-      console.log(question.selected);
     },
   },
 });
