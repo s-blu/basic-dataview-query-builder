@@ -8,18 +8,18 @@
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
       },
       {
-        "label": "I want to have a TABLE that presents my result file links and additional data for each hit",
+        "label": "I want to have a TABLE that presents my results as file links with additional data for each hit",
         "dataview": "TABLE",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#table-queries"
       },
       {
-        "label": "I want to search and find TASKs",
+        "label": "I want to have an interactive TASK list that summarises my tasks",
         "dataview": "TASK",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#task-queries"
       },
       {
         "type": "input",
-        "label": "I want to see a CALENDAR which indicates each hit with a dot",
+        "label": "I want to see a CALENDAR which shows each hit as a dot",
         "dataview": "CALENDAR {{datefield}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
         "inputs": [
@@ -36,35 +36,45 @@
     }
   },
   {
-    "question": "Do you want to query all notes in your vault or only some? What does these 'some' have in common?",
+    "question": "Do you want to query all notes in your vault or just those from a particular folder/tag/link?",
     "answers": [
       {
         "label": "I want to query all notes",
         "dataview": ""
       },
       {
-        "label": "I want to query some notes which have a tag",
+        "label": "I only want to query notes that have a particular tag",
         "dataview": "FROM #{{tagName}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I want to query notes in a folder on root",
+        "label": "I only want to query notes inside a specific root-level folder (and its subfolders)",
         "dataview": "FROM \"{{folderName}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I want to query notes in a subfolder",
+        "label": "I only want to query notes inside a specific subfolder",
         "dataview": "FROM \"{{path/to/folderName}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I want to query notes that are linking to my current note",
+        "label": "I only want to query notes that link to my current note",
         "dataview": "FROM [[]]",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I want to query notes my current note is linking to",
+        "label": "I only want to query notes that my current note links to",
         "dataview": "FROM outgoing([[]])",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
+      },
+      {
+        "label": "I only want to query notes that link to a specific note",
+        "dataview": "FROM [[{{NoteName}}]]",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
+      },
+      {
+        "label": "I only want to query notes that are linked to from a specific note",
+        "dataview": "FROM outgoing([[{{NoteName}}]])",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       }
     ],
@@ -73,26 +83,139 @@
     }
   },
   {
-    "question": "Do you want to filter your notes further based on meta data?",
+    "question": "Do you want to refine your results further based on one of your metadata fields?",
     "answers": [
       {
-        "label": "No, I want to see all notes my FROM is giving me",
+        "label": "No, I want to see all notes returned by my FROM statement",
         "dataview": ""
       },
       {
-        "label": "I want to see only notes that have a meta data set",
-        "dataview": "WHERE {{nameOfMetadata}}",
+        "label": "Yes, I only want to see notes where a particular field exists",
+        "dataview": "WHERE {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where"
       },
       {
-        "label": "I want to see only notes where my (single value) meta data has a certain value",
-        "dataview": "WHERE {{nameOfMetadata}} = {{value}}",
+        "label": "I only want to see notes where a particular field equals a certain value (number, string, date, etc)",
+        "dataview": "WHERE {{nameOfField}} = {{value}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where"
       },
       {
-        "label": "I want to see only notes where my (multi value) meta data contains a certain value",
+        "label": "I only want to see notes where a particular field contains certain value (inside an array, or as part of a string)",
         "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value"
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "Do you want one result per note, or a separate result for each bullet/task/element in your notes?",
+    "answers": [
+      {
+        "label": "I want one result per note",
+        "dataview": ""
+      },
+      {
+        "label": "I want a separate result for every bullet point in my file",
+        "dataview": "FLATTEN file.lists AS bullets",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      },
+      {
+        "label": "I want separate results, but only for some of the bullet points in my file",
+        "dataview": "FLATTEN file.lists AS bullets \nWHERE contains(bullets.text, {{value}})",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      },
+      {
+        "label": "I want a separate result for every task in my file",
+        "dataview": "FLATTEN file.tasks AS task",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      },
+      {
+        "label": "I want separate results, but only for some of the tasks in my file",
+        "dataview": "FLATTEN file.tasks AS task \nWHERE contains(tasks.text, {{value}})",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      },
+      {
+        "label": "I want a separate result for every element from one of my metadata fields",
+        "dataview": "FLATTEN {{nameOfField}} AS flatField",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      },
+      {
+        "label": "I want separate results, but only for some of the elements in my field",
+        "dataview": "FLATTEN {{nameOfField}} AS flatField \nWHERE contains(flatField, {{value}})",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "Do you want similar results grouped together based on one of their metadata values?",
+    "answers": [
+      {
+        "label": "No, I just want all results treated as a single list/table",
+        "dataview": ""
+      },
+      {
+        "label": "Yes, based on the file they came from. (Good for TASK lists)",
+        "dataview": "GROUP BY file.link",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+      },
+      {
+        "label": "Yes, based on the month they were created.",
+        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\") AS Created",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+      },
+      {
+        "label": "Yes, based on my own metadata field",
+        "dataview": "GROUP BY {{nameOfField}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group"
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "How do you want the results sorted?",
+    "answers": [
+      {
+        "label": "I don't really care",
+        "dataview": ""
+      },
+      {
+        "label": "Based on the note name, in alphabetical order",
+        "dataview": "SORT file.name asc",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+      },
+      {
+        "label": "Based on the note's creation date, newest to oldest",
+        "dataview": "SORT file.ctime desc",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+      },
+      {
+        "label": "Based on my own metadata field, in descending order",
+        "dataview": "SORT {{nameOfField}} desc",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#sort"
+      }
+    ],
+    "selected": {
+      "dataview": ""
+    }
+  },
+  {
+    "question": "Do you want every result, or just the first few matches?",
+    "answers": [
+      {
+        "label": "Show me everything",
+        "dataview": ""
+      },
+      {
+        "label": "Just the first few matching results",
+        "dataview": "Limit {{numberOfResults}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#limit"
       }
     ],
     "selected": {
