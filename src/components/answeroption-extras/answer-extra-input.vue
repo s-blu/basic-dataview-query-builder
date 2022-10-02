@@ -18,8 +18,9 @@ export default {
   },
   watch: {
     inputval(newVal, oldVal) {
-      // TODO: debounce event emitting with lodash or something
-      console.log("bounce");
+      if (this.input.variabletype === "metadata" && newVal.matchAll(/\s/g)) {
+        newVal = newVal.replace(/\s+/g, "-").toLowerCase();
+      }
       this.$emit("updateExtra", this.input.varname, newVal);
     },
   },

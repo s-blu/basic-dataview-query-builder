@@ -41,6 +41,7 @@
           {
             "type": "input",
             "label": "Which date field should be used?",
+            "variabletype": "metadata",
             "varname": "datefield"
           }
         ]
@@ -153,6 +154,7 @@
           {
             "type": "input",
             "label": "Name of field",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           },
           {
@@ -170,6 +172,7 @@
           {
             "type": "input",
             "label": "Name of field",
+            "variabletype": "metadata",
             "varname": "nameOfMetadata"
           },
           {
@@ -230,6 +233,7 @@
           {
             "type": "input",
             "label": "Field name",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           }
         ]
@@ -242,6 +246,7 @@
           {
             "type": "input",
             "label": "Field name",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           },
           {
@@ -278,6 +283,7 @@
           {
             "type": "input",
             "label": "Field name to group after",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           }
         ]
@@ -309,6 +315,7 @@
           {
             "type": "input",
             "label": "Field name to sort after",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           }
         ]
@@ -321,6 +328,7 @@
           {
             "type": "input",
             "label": "Field name to sort after",
+            "variabletype": "metadata",
             "varname": "nameOfField"
           }
         ]
