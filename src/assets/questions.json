@@ -166,7 +166,7 @@
       },
       {
         "label": "I only want to see notes where a particular field contains certain value (inside an array, or as part of a string)",
-        "dataview": "WHERE contains({{nameOfMetadata}}, {{value}})",
+        "dataview": "WHERE contains({{nameOfMetadata}}, \"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value",
         "extras": [
           {
@@ -198,7 +198,7 @@
       },
       {
         "label": "I want separate results, but only for some of the bullet points in my file",
-        "dataview": "FLATTEN file.lists AS bullets \nWHERE contains(bullets.text, {{value}})",
+        "dataview": "FLATTEN file.lists AS bullets \nWHERE contains(bullets.text, \"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
         "extras": [
           {
@@ -215,7 +215,7 @@
       },
       {
         "label": "I want separate results, but only for some of the tasks in my file",
-        "dataview": "FLATTEN file.tasks AS task \nWHERE contains(tasks.text, {{value}})",
+        "dataview": "FLATTEN file.tasks AS task \nWHERE contains(tasks.text, \"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
         "extras": [
           {
@@ -240,7 +240,7 @@
       },
       {
         "label": "I want separate results, but only for some of the elements in my field",
-        "dataview": "FLATTEN {{nameOfField}} AS flatField \nWHERE contains(flatField, {{value}})",
+        "dataview": "FLATTEN {{nameOfField}} AS flatField \nWHERE contains(flatField, \"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
         "extras": [
           {
