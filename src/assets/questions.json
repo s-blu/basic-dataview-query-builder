@@ -49,7 +49,7 @@
     ]
   },
   {
-    "question": "Do you want to query all notes in your vault or just those from a particular folder/tag/link?",
+    "question": "Do you want to include all notes in your vault or just those from a particular folder/tag/link?",
     "answers": [
       {
         "label": "I want to query all notes",
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "question": "Do you want to refine your results further based on one of your metadata fields?",
+    "question": "Do you want to filter your results further based on one of your metadata fields?",
     "answers": [
       {
         "label": "No, I want to see all notes returned by my FROM statement",
@@ -170,6 +170,10 @@
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value",
         "extras": [
           {
+            "type": "hint",
+            "message": "Using the contains function allows you to either search for a substring in texts, i.e. it'll find 'Lorem ipsum' if you search for 'Lor' or to search a multi-value field for one element. Hit the ? on the answer to read more about contains()."
+          },
+          {
             "type": "input",
             "label": "Name of field",
             "variabletype": "metadata",
@@ -185,116 +189,10 @@
     ]
   },
   {
-    "question": "Do you want one result per note, or a separate result for each bullet/task/element in your notes?",
-    "answers": [
-      {
-        "label": "I want one result per note",
-        "dataview": ""
-      },
-      {
-        "label": "I want a separate result for every bullet point in my file",
-        "dataview": "FLATTEN file.lists AS bullets",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
-      },
-      {
-        "label": "I want separate results, but only for some of the bullet points in my file",
-        "dataview": "FLATTEN file.lists AS bullets \nWHERE contains(bullets.text, \"{{value}}\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Text content to search for",
-            "varname": "value"
-          }
-        ]
-      },
-      {
-        "label": "I want a separate result for every task in my file",
-        "dataview": "FLATTEN file.tasks AS task",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten"
-      },
-      {
-        "label": "I want separate results, but only for some of the tasks in my file",
-        "dataview": "FLATTEN file.tasks AS task \nWHERE contains(tasks.text, \"{{value}}\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Text content to search for",
-            "varname": "value"
-          }
-        ]
-      },
-      {
-        "label": "I want a separate result for every element from one of my metadata fields",
-        "dataview": "FLATTEN {{nameOfField}} AS flatField",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Field name",
-            "variabletype": "metadata",
-            "varname": "nameOfField"
-          }
-        ]
-      },
-      {
-        "label": "I want separate results, but only for some of the elements in my field",
-        "dataview": "FLATTEN {{nameOfField}} AS flatField \nWHERE contains(flatField, \"{{value}}\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#flatten",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Field name",
-            "variabletype": "metadata",
-            "varname": "nameOfField"
-          },
-          {
-            "type": "input",
-            "label": "Value to check for",
-            "varname": "value"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "question": "Do you want similar results grouped together based on one of their metadata values?",
-    "answers": [
-      {
-        "label": "No, I just want all results treated as a single list/table",
-        "dataview": ""
-      },
-      {
-        "label": "Yes, based on the file they came from. (Good for TASK lists)",
-        "dataview": "GROUP BY file.link",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
-      },
-      {
-        "label": "Yes, based on the month they were created.",
-        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\") AS Created",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
-      },
-      {
-        "label": "Yes, based on my own metadata field",
-        "dataview": "GROUP BY {{nameOfField}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Field name to group after",
-            "variabletype": "metadata",
-            "varname": "nameOfField"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "question": "How do you want the results sorted?",
     "answers": [
       {
-        "label": "I don't really care",
+        "label": "Ascending after file path or group key, if I choose to group next (default behaviour)",
         "dataview": ""
       },
       {
@@ -330,6 +228,54 @@
             "label": "Field name to sort after",
             "variabletype": "metadata",
             "varname": "nameOfField"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you want similar results grouped together based on one of their metadata values?",
+    "answers": [
+      {
+        "label": "No, I want one result line per note",
+        "dataview": ""
+      },
+      {
+        "label": "Yes, based on the file they came from (default behaviour, except on TASK queries)",
+        "dataview": "GROUP BY file.link",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Yes, based on the month they were created.",
+        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\") AS Created",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Yes, based on my own metadata field",
+        "dataview": "GROUP BY {{nameOfField}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Field name to group after",
+            "variabletype": "metadata",
+            "varname": "nameOfField"
+          },
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
           }
         ]
       }
