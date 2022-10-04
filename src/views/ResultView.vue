@@ -23,17 +23,17 @@ export default {
       <div class="result-msg">
         <div class="header">Finished!</div>
         <div class="msg">
-          Thanks for taking the questionnaire! Below is your query! Your next
+          Congratulations to your new dataview query! Your next
           steps:
           <ol class="next-steps">
             <li>
               Copy the query below - make sure to copy the whole block (with the
-              backticks)
+              backticks) by i.e. using the copy button on the right.
             </li>
-            <li>Paste it into a note of your choice in your vault</li>
+            <li>Paste it into a note of your choice in your vault.</li>
             <li>
               Replace the placeholders in curly brackets with your individual
-              tags, folders, meta data names
+              tags, folders, meta data names, if any are left.
             </li>
             <li>
               Click outside of the query block (in Live Preview) or switch to

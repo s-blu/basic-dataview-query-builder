@@ -19,11 +19,7 @@ export default {
           <a href="https://github.com/s-blu/basic-dataview-query-builder/issues"
             >github</a
           >
-          or send a
-          <a
-            href="mailto:bdqb@s-blu.de?subject=Bug or Feature Request in Basic Dataview Query Builder"
-            >mail to bdqb at s-blu.de</a
-          >.
+          - thanks!
         </div>
       </div>
       <div class="column is-narrow links">

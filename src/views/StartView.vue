@@ -1,18 +1,17 @@
-<script lang="ts">
-
-
-</script>
+<script lang="ts"></script>
 
 <template>
   <main>
     <div class="welcomemsg">
-      <div class="header">Welcome!</div>
+      <div class="header">Welcome to the Basic Dataview Query Builder!</div>
       <div class="msg">
-        Welcome to the Basic Dataview Query Builder! <br />
-        This page will guide you through some multiple choice questions to put
-        together a basic dataview query for your use case - either to use
-        directly as-is in your vault or as a starting point to refine it further
-        to build a more advanced query.
+        The Basic Dataview Query Builder will guide you through some questions
+        and put together a dataview query based on your answers. Either use this
+        query as-is in your vault or as a starting point to refine it further to
+        build a more advanced query. <br />
+        The goal is to help you on your first dataview queries and to give you a
+        better understanding of the syntax and needed information to build
+        dataview queries from scratch.
         <br />
         Click the button to start!
       </div>
@@ -47,7 +46,7 @@
           >github repository</a
         >.
       </div>
-    </div>   
+    </div>
   </main>
 </template>
 
