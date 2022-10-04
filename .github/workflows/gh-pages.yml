@@ -1,7 +1,7 @@
 name: Deploy Github Pages
 on:
   push:
-    branches: [ main, publish ]
+    branches: [ main, matomo ]
 
 jobs:
   build-and-deploy:

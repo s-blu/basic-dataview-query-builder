@@ -11,19 +11,40 @@ export default {
 
 <template>
   <div class="app-footer">
-    <span>Basic Dataview Query Builder v{{ version }} </span>
-    <span
-      >Found an issue or have a feature request? Open an issue on
-      <a href="https://github.com/s-blu/basic-dataview-query-builder/issues"
-        >github</a
-      >.</span
-    >
-    <a
-      class="icon is-pulled-right github-icon"
-      href="https://github.com/s-blu/basic-dataview-query-builder"
-    >
-      <i class="fa-brands fa-github"></i>
-    </a>
+    <div class="columns is-multiline">
+      <div class="column">
+        <div>Basic Dataview Query Builder v{{ version }}</div>
+        <div>
+          Found an issue or have a feature request? Open an issue on
+          <a href="https://github.com/s-blu/basic-dataview-query-builder/issues"
+            >github</a
+          >
+          or send a
+          <a
+            href="mailto:bdqb@s-blu.de?subject=Bug or Feature Request in Basic Dataview Query Builder"
+            >mail to bdqb at s-blu.de</a
+          >.
+        </div>
+      </div>
+      <div class="column is-narrow links">
+        <a
+          href="https://github.com/s-blu/basic-dataview-query-builder"
+          target="_blank"
+        >
+          Github
+        </a>
+        <router-link to="/privacy">Privacy</router-link>
+      </div>
+      <div class="spacer"></div>
+      <div class="column is-narrow links">
+        <a
+          href="https://blacksmithgu.github.io/obsidian-dataview/"
+          target="_blank"
+          >Dataview Docs</a
+        >
+        <a href="https://obsidian.md/" target="_blank">Obsidian</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,13 +57,16 @@ export default {
   span {
     padding-right: 2em;
   }
+}
 
-  .github-icon {
-    color: var(--color-text-hint);
+.spacer {
+  margin-right: 2em;
+}
 
-    &:hover {
-      color: var(--color-text-interactive);
-    }
+.links {
+  text-align: right;
+  & > * {
+    display: block;
   }
 }
 </style>
