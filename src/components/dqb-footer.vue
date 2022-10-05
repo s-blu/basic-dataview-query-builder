@@ -30,6 +30,11 @@ export default {
           Github
         </a>
         <router-link to="/privacy">Privacy</router-link>
+        <a
+          href="https://github.com/s-blu/basic-dataview-query-builder/blob/main/CHANGELOG.md"
+          target="_blank"
+          >Changelog</a
+        >
       </div>
       <div class="spacer"></div>
       <div class="column is-narrow links">

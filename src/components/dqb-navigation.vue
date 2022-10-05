@@ -20,8 +20,8 @@ export default {
 </script>
 
 <template>
-  <nav class="navigation columns">
-    <div class="column is-2">
+  <nav class="navigation columns is-mobile">
+    <div class="column">
       <router-link :to="previous" class="button">
         <span class="icon">
           <i class="fa-solid fa-arrow-left"></i>
@@ -29,10 +29,10 @@ export default {
         <span>Previous</span>
       </router-link>
     </div>
-    <div class="questionprogress column is-centered">
+    <div class="questionprogress column is-centered is-hidden-touch">
       Question {{ Number($route.params.id) }} / {{ questionsLength }}
     </div>
-    <div class="column is-2">
+    <div class="column">
       <router-link :to="next" class="button is-pulled-right">
         <span>{{ next === "/result" ? "Show result" : "Next" }}</span>
         <span class="icon">
