@@ -40,17 +40,15 @@ ${this.computedQuery}
       <span class="icon"> <i class="fa-regular fa-copy"></i></span>
     </button>
     <p>```dataview</p>
-    <!-- <pre class="dataview">{{ queryString }}</pre> -->
-
     <container v-for="(part, index) in queryParts" :key="index">
-      <p v-if="part">
-        <span v-if="Number($route.params.id) === index + 1">>></span>
-        {{ index }} {{ part }}
+      <p
+        v-if="part"
+        :class="{ active: Number($route.params.id) === index + 1 }"
+      >
+        {{ part }}
       </p>
     </container>
-
     <p>```</p>
-    rote {{ $route.params.id }}
   </div>
 </template>
 
@@ -62,7 +60,7 @@ ${this.computedQuery}
     monospace;
 
   @include box;
-  padding: 0 16px;
+  padding: 0 20px;
   background-color: #baccde;
 
   .dataview {
@@ -70,10 +68,25 @@ ${this.computedQuery}
     padding: 0;
     color: inherit;
   }
+
+  .active {
+    font-weight: bold;
+
+    &::before {
+      content: ">";
+      position: absolute;
+      left: -0.8em;
+      font-size: 15pt;
+      color: var(--color-text-hint);
+      font-weight: bold;
+      height: 100%;
+    }
+  }
 }
 button.copybtn.is-ghost {
   float: right;
   right: -12px;
   top: 4px;
+  z-index: 10;
 }
 </style>
