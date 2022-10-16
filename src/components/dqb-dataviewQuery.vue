@@ -4,11 +4,22 @@ import { mapState } from "pinia";
 
 export default {
   computed: {
-    ...mapState(useQuestionsStore, ["queryParts", "computedQuery"]),
+    ...mapState(useQuestionsStore, [
+      "queryParts",
+      "computedQuery",
+      "computedQueryParts",
+    ]),
     queryString() {
       return `\`\`\`dataview
 ${this.computedQuery}
 \`\`\``;
+    },
+    queryParts() {
+      if (this.computedQueryParts.length < Number(this.$route.params.id)) {
+        console.log([...this.computedQueryParts, ""]);
+        return [...this.computedQueryParts, ""];
+      }
+      return this.computedQueryParts;
     },
   },
   methods: {
@@ -28,7 +39,18 @@ ${this.computedQuery}
     >
       <span class="icon"> <i class="fa-regular fa-copy"></i></span>
     </button>
-    <pre class="dataview">{{ queryString }}</pre>
+    <p>```dataview</p>
+    <!-- <pre class="dataview">{{ queryString }}</pre> -->
+
+    <container v-for="(part, index) in queryParts" :key="index">
+      <p v-if="part">
+        <span v-if="Number($route.params.id) === index + 1">>></span>
+        {{ index }} {{ part }}
+      </p>
+    </container>
+
+    <p>```</p>
+    rote {{ $route.params.id }}
   </div>
 </template>
 

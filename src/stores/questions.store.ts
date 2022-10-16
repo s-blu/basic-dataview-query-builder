@@ -16,15 +16,18 @@ export const useQuestionsStore = defineStore("questionsStore", {
         .filter((q) => q.selected?.dataview)
         .map((q) => q.selected?.dataview),
     questionsLength: (state) => state.questions.length,
-    computedQuery: (state) => {
-      const queryParts = state.questions
-        .filter((q) => q.selected?.dataview)
-        .map((q) => replacePlaceholdersInQueryString(q));
+    computedQueryParts: (state) => {
+      const queryParts = state.questions.map((q) =>
+        replacePlaceholdersInQueryString(q)
+      );
 
       handleGroupByCommand(queryParts);
 
-      return queryParts.reduce(
-        (acc, curr) => `${acc}${acc ? "\n" : ""}${curr.selected?.dataview}`,
+      return queryParts.map((q) => q.selected?.dataview || "");
+    },
+    computedQuery: (state) => {
+      return state.computedQueryParts.reduce(
+        (acc, curr) => (curr ? `${acc}${acc ? "\n" : ""}${curr}` : acc),
         ""
       );
     },

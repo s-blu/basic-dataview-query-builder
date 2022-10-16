@@ -49,7 +49,7 @@ export default {
     <div class="column">
       <dqb-router-button
         :to="next"
-        :disabled="!currentAnswer.dataview"
+        :disabled="currentAnswer.dataview === undefined"
         disabledBecause="Please select an answer first!"
         class="is-pulled-right"
       >

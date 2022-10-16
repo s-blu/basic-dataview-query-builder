@@ -23,7 +23,7 @@ export function handleGroupByCommand(questions: Array<Question>) {
   let groupByIndex;
 
   questions.forEach((q: Question, index: number) => {
-    if (q.selected.dataview.includes("GROUP BY")) groupByIndex = index;
+    if (q.selected?.dataview.includes("GROUP BY")) groupByIndex = index;
   });
 
   if (!groupByIndex) {
@@ -39,6 +39,7 @@ export function handleGroupByCommand(questions: Array<Question>) {
   }
 
   function _prependRows(question: Question) {
+    if (!question.selected) return;
     // in case of multiple meta data fields, split by ,
     const parts = question.selected.dataview.split(",");
     const querytypeOrDataCmd = parts[0].split(" ")[0];
