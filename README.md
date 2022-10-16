@@ -16,6 +16,51 @@ If you find a bug, have a question or would like to see another feature, feel fr
 
 This page is based on a Vue 3 application built with Vite, styled with [Bulma.io](https://bulma.io). 
 
+### Questions JSON
+
+The questions of the Basic Query Builder are stored in a .json for easy maintainability and exchangebility. That makes it theoretically possible to build multiple query builders, i.e. some that focus on a specific part of dataview. To be recognized by the query builder, the JSON file needs to follow a certain structure.
+
+The JSON contains an **Array** with **Question objects**.
+
+#### Object structures 
+
+**Question**
+```
+question: string // The question itself
+answers: AnswerOption[] // array of all available answers
+```
+
+**Answeroptions**
+
+```
+label: string // the text of the answer
+dataview: string // dataview the answer produces. Put variables that should be replaceable in {{}}
+readmore: string // (optional) link to the official dataview documentation that gives more info about the resulting dataview
+extras: AnswerOptionExtras[] // (optional) additional UI elements associated with this answer
+```
+
+**AnswerOptionExtras: Input**
+
+Renders a text input field that can be used to replace placeholders in the answeroptions dataview.
+
+```
+type: "input" // type of extra. 
+label: string // label of the input field
+variabletype: string // (optional) type of variable to perform specific operations on input. Currently available: metadata
+varname: string // variable name used in the dataview string of the answer that should be replaced with this input value
+```
+
+**AnswerOptionExtras: Hint**
+
+Displays a message box/notification with some custom text that can give hints or additional context.
+
+```
+type: "hint" // type of extra. 
+title: string // (optional) Title of the message box
+message: string // message of the message box
+```
+
+
 ### Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
