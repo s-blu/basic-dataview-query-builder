@@ -148,7 +148,7 @@
       },
       {
         "label": "I only want to see notes where a particular field equals a certain value (number, string, date, etc)",
-        "dataview": "WHERE {{nameOfField}} = {{value}}",
+        "dataview": "WHERE {{nameOfField}} = \"{{value}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where",
         "extras": [
           {
