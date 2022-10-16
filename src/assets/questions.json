@@ -14,7 +14,12 @@
         "extras": [
           {
             "type": "hint",
-            "message": "Please give a comma separated list of meta data you would like to see in your table alongside the file link of your hit (or the group key, if you later decide to group)."
+            "message": "Please give a comma separated list of meta data you would like to see in your table alongside the file link of your hit (or the group key, if you later decide to group). "
+          },
+          {
+            "type": "hint",
+            "title": "Meta data keys with spaces",
+            "message": "If your meta data key contain spaces, you cannot use it as-is. It won't get recognized. Please replace all spaces with dashes and write it lower case, i.e. if your key is 'Todays Good Deeds', use 'todays-good-deeds' in dataview queries."
           },
           {
             "type": "input",

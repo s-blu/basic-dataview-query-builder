@@ -5,6 +5,7 @@
 - Disable previous button on first question
 - Disable next button when no answer is selected
 - Add highlighting to the currently "editable" row of the dataview query
+- Small adjustments and added info blocks for several questions
 
 ## v1.0.1
 
