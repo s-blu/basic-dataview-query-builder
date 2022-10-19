@@ -13,6 +13,7 @@ export default {
   <main>
     <Navigation></Navigation>
     <Question class="question"></Question>
+    <Navigation hide-subtitle="true"></Navigation>
     <DataviewQuery class="dataviewquery"></DataviewQuery>
   </main>
 </template>

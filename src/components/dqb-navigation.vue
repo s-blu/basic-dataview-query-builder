@@ -4,6 +4,7 @@ import { mapState } from "pinia";
 import DqbRouterButton from "./dqb-routerButton.vue";
 
 export default {
+  props: ["hideSubtitle"],
   computed: {
     ...mapState(useQuestionsStore, ["questionsLength", "questions"]),
     next() {
@@ -44,7 +45,9 @@ export default {
       </dqb-router-button>
     </div>
     <div class="questionprogress column is-centered is-hidden-touch">
-      Question {{ Number($route.params.id) }} / {{ questionsLength }}
+      <span v-if="!hideSubtitle"
+        >Question {{ Number($route.params.id) }} / {{ questionsLength }}</span
+      >
     </div>
     <div class="column">
       <dqb-router-button

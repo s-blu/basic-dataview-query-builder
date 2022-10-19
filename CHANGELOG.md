@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1
+
+- Add explanation about question.json to README
+- Duplicate navigation buttons after the question for easier navigation
+- 
+
 ## v1.1.0
 
 - Disable previous button on first question

@@ -12,7 +12,9 @@ We hope you enjoy!
 
 If you find a bug, have a question or would like to see another feature, feel free to open a issue at the [github repository](https://github.com/s-blu/basic-dataview-query-builder).
 
-## Development
+## Development/Contribution
+
+**If you want to use the basic dataview query builder, click the link at the very top of this information!** The following information is for developing and customizing the basic dataview query.
 
 This page is based on a Vue 3 application built with Vite, styled with [Bulma.io](https://bulma.io). 
 
