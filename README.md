@@ -29,6 +29,8 @@ The JSON contains an **Array** with **Question objects**.
 **Question**
 ```
 question: string // The question itself
+subtitle: string // Subtitle or Category of the question, shown in the navigation (desktop only)
+condition: ConditionString // (optional) If present, determines based on the available queryParts if the question should be asked or not
 answers: AnswerOption[] // array of all available answers
 ```
 

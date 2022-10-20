@@ -1,5 +1,7 @@
 export interface Question {
   question: string;
+  subtitle: string;
+  condition: string;
   answers: Array<AnswerOption>;
   selected: SelectedAnswer;
 }

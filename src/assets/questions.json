@@ -1,6 +1,7 @@
 [
   {
     "question": "In which form you want to see the results of your query?",
+    "subtitle": "Query Type",
     "answers": [
       {
         "label": "I want to have a LIST of file links matching my query",
@@ -55,6 +56,7 @@
   },
   {
     "question": "Do you want to include all notes in your vault or just those from a particular folder/tag/link?",
+    "subtitle": "Page sources",
     "answers": [
       {
         "label": "I want to query all notes",
@@ -134,6 +136,7 @@
   },
   {
     "question": "Do you want to filter your results further based on one of your metadata fields?",
+    "subtitle": "Filter pages",
     "answers": [
       {
         "label": "No, I want to see all notes returned by my FROM statement",
@@ -195,6 +198,7 @@
   },
   {
     "question": "How do you want the results sorted?",
+    "subtitle": "Sorting",
     "answers": [
       {
         "label": "Ascending after file path or group key, if I choose to group next (default behaviour)",
@@ -240,6 +244,7 @@
   },
   {
     "question": "Do you want similar results grouped together based on one of their metadata values?",
+    "subtitle": "Grouping",
     "answers": [
       {
         "label": "No, I want one result line per note",
@@ -288,6 +293,7 @@
   },
   {
     "question": "Do you want every result, or just the first few matches?",
+    "subtitle": "Set a limit",
     "answers": [
       {
         "label": "Show me everything",

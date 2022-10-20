@@ -20,10 +20,11 @@ export default {
     isFirstQuestion() {
       return Number(this.$route.params.id) === 1;
     },
+    currentQuestion() {
+      return this.questions[Number(this.$route.params.id) - 1] || {};
+    },
     currentAnswer() {
-      return (
-        (this.questions[Number(this.$route.params.id) - 1] || {}).selected || {}
-      );
+      return this.currentQuestion.selected || {};
     },
   },
   components: { DqbRouterButton },
@@ -45,9 +46,7 @@ export default {
       </dqb-router-button>
     </div>
     <div class="questionprogress column is-centered is-hidden-touch">
-      <span v-if="!hideSubtitle"
-        >Question {{ Number($route.params.id) }} / {{ questionsLength }}</span
-      >
+      <span v-if="!hideSubtitle">{{ currentQuestion.subtitle }}</span>
     </div>
     <div class="column">
       <dqb-router-button
