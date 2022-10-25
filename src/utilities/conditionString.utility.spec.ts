@@ -146,6 +146,14 @@ describe("ConditionStrings", () => {
           "LIST~TABLE WHERE~FROM -SORT LIMIT contains~substring FLATTEN"
         )
       ).toBeTruthy();
+
+      expect(
+        doesFulfillCondition(
+          query,
+          "LIST~TABLE WHERE~FROM SORT LIMIT contains~substring FLATTEN"
+        )
+      ).toBeFalsy();
+      expect(doesFulfillCondition(query, "LIST TABLE -SORT")).toBeFalsy();
     });
   });
 });

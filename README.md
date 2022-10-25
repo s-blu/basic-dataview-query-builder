@@ -38,16 +38,17 @@ answers: AnswerOption[] // array of all available answers
 
 A condition string is a normal string that needs to follow a convention. It checks if the given words are part of the query (case sensitive) and helps decide if the conditioned question is relevant to ask or not. The condition is always executed on the raw dataview, without variable (user input) replacement. 
 
-`WORD` Mandatory Word. Needs to be present.
-`-WORD` Forbidden word. Cannot be present.
-`~WORD` OR. Needs to be combined with Mandatory or forbidden words to create OR concantinations
+- `WORD` Mandatory Word. Needs to be present.
+- `-WORD` Forbidden word. Cannot be present.
+- `~WORD` OR. Needs to be combined with mandatory or forbidden words to create OR concantinations
 
 _Examples_
-`TABLE` Question will be shown if TABLE is present in current query (if it is a TABLE query)
-`WHERE~FROM` Question will be shown if either WHERE or FROM or both are present
-`TABLE -GROUP` Question will be shown if TABLE is present and GROUP is not.
-`TABLE FLATTEN -GROUP~LIMIT` Question will be shown if TABLE and FLATTEN is available, but GROUP or LIMIT are not.
-`LIST~TABLE~TASK FLATTEN -GROUP` Question will be shown if FLATTEN and LIST or TABLE or TASK are available and GROUP is not.
+
+- `TABLE` Question will be shown if TABLE is present in current query (if it is a TABLE query)
+- `WHERE~FROM` Question will be shown if either WHERE or FROM or both are present
+- `TABLE -GROUP` Question will be shown if TABLE is present and GROUP is not.
+- `TABLE FLATTEN -GROUP~LIMIT` Question will be shown if TABLE and FLATTEN is available, but GROUP or LIMIT are not.
+- `LIST~TABLE~TASK FLATTEN -GROUP` Question will be shown if FLATTEN and LIST or TABLE or TASK are available and GROUP is not.
 
 **Answeroptions**
 
