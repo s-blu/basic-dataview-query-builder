@@ -8,9 +8,9 @@ export default {
     DqbDataviewQuery,
   },
   methods: {
-    ...mapActions(useQuestionsStore, ["resetSelectedAnswers"]),
+    ...mapActions(useQuestionsStore, ["resetAppState"]),
     startNew() {
-      this.resetSelectedAnswers();
+      this.resetAppState();
       this.$router.push("/");
     },
   },
@@ -23,8 +23,7 @@ export default {
       <div class="result-msg">
         <div class="header">Finished!</div>
         <div class="msg">
-          Congratulations to your new dataview query! Your next
-          steps:
+          Congratulations to your new dataview query! Your next steps:
           <ol class="next-steps">
             <li>
               Copy the query below - make sure to copy the whole block (with the

@@ -30,6 +30,10 @@ export function doesFulfillCondition(
   rawDataviewParts: any[],
   conditionString: string
 ) {
+  if (!conditionString) {
+    return true;
+  }
+
   const conditions = parseConditionString(conditionString);
   const query = rawDataviewParts.reduce(
     (acc: any, curr: any) => `${acc} ${curr}`,

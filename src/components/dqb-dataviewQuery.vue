@@ -8,6 +8,7 @@ export default {
       "queryParts",
       "computedQuery",
       "computedQueryParts",
+      "currentQuestionIndex",
     ]),
     queryString() {
       return `\`\`\`dataview
@@ -15,7 +16,7 @@ ${this.computedQuery}
 \`\`\``;
     },
     queryParts() {
-      if (this.computedQueryParts.length < Number(this.$route.params.id)) {
+      if (this.computedQueryParts.length < Number(this.currentQuestionIndex)) {
         console.log([...this.computedQueryParts, ""]);
         return [...this.computedQueryParts, ""];
       }
@@ -43,7 +44,7 @@ ${this.computedQuery}
     <container v-for="(part, index) in queryParts" :key="index">
       <p
         v-if="part"
-        :class="{ active: Number($route.params.id) === index + 1 }"
+        :class="{ active: Number(currentQuestionIndex) === index }"
       >
         {{ part }}
       </p>
