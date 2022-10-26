@@ -50,13 +50,7 @@ export function enhanceWithAppendixes(questions: Array<Question>) {
   questions.forEach((question, i) => {
     if (!question.appendix || !question.selected) return;
 
-    let appI;
-    if (question.appendix.startsWith(".")) {
-      const relative = Number(question.appendix.substring(1));
-      appI = i + relative;
-    } else {
-      appI = Number(question.appendix);
-    }
+    const appI = determineAppendixId(question, i);
 
     replacePlaceholdersInQueryString(question, false);
     if (questions[appI].selected) {
@@ -68,6 +62,19 @@ export function enhanceWithAppendixes(questions: Array<Question>) {
         question.selected.dataview;
     }
   });
+}
+
+export function determineAppendixId(question: Question, i: number) {
+  if (!question?.appendix) return i;
+
+  let appI;
+  if (question.appendix.startsWith(".")) {
+    const relative = Number(question.appendix.substring(1));
+    appI = i + relative;
+  } else {
+    appI = Number(question.appendix);
+  }
+  return appI;
 }
 
 export function handleGroupByCommand(questions: Array<Question>) {

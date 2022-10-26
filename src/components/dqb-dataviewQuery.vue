@@ -1,5 +1,6 @@
 <script lang="ts">
 import { useQuestionsStore } from "@/stores/questions.store";
+import { determineAppendixId } from "@/utilities/dataviewQuery.utility";
 import { mapState } from "pinia";
 
 export default {
@@ -9,6 +10,7 @@ export default {
       "computedQuery",
       "computedQueryParts",
       "currentQuestionIndex",
+      "currentQuestion",
     ]),
     queryString() {
       return `\`\`\`dataview
@@ -21,6 +23,12 @@ ${this.computedQuery}
         return [...this.computedQueryParts, ""];
       }
       return this.computedQueryParts;
+    },
+    activeIndex() {
+      return determineAppendixId(
+        this.currentQuestion,
+        this.currentQuestionIndex
+      );
     },
   },
   methods: {
@@ -42,10 +50,7 @@ ${this.computedQuery}
     </button>
     <p>```dataview</p>
     <container v-for="(part, index) in queryParts" :key="index">
-      <p
-        v-if="part"
-        :class="{ active: Number(currentQuestionIndex) === index }"
-      >
+      <p v-if="part" :class="{ active: activeIndex === index }">
         {{ part }}
       </p>
     </container>
