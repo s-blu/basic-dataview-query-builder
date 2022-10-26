@@ -312,5 +312,31 @@
         ]
       }
     ]
+  },
+  {
+    "question": "Do you want to see an additional information alongside your file links on your LIST?",
+    "condition": "LIST -GROUP",
+    "appendix": "0",
+    "subtitle": "Additional List Field",
+    "answers": [
+      {
+        "label": "No, I only want to see my file links",
+        "dataview": "",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
+      },
+      {
+        "label": "Show a meta data value alongside the file links",
+        "dataview": "{{listfield}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries",
+        "extras": [
+          {
+            "type": "input",
+            "variabletype": "metadata",
+            "label": "Meta data to output",
+            "varname": "listfield"
+          }
+        ]
+      }
+    ]
   }
 ]

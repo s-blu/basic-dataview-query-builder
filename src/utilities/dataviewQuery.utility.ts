@@ -1,10 +1,21 @@
 import type { Question } from "./../interfaces/question";
-export function replacePlaceholdersInQueryString(question: Question) {
-  if (!question.selected?.variables || !question.selected?.dataview) {
+export function replacePlaceholdersInQueryString(
+  question: Question,
+  ignoreAppendixQuestions = true
+) {
+  if (!question.selected) {
+    return question;
+  }
+  if (question.appendix && ignoreAppendixQuestions) {
+    question.selected.dataview = "";
+    return question;
+  }
+  question.selected.dataview = question.selected.rawDataview;
+
+  if (!question.selected.variables) {
     return question;
   }
 
-  question.selected.dataview = question.selected.rawDataview;
   const placeholders = question.selected.dataview.matchAll(/{{([^}]+)?}}/g);
 
   for (const match of placeholders) {
@@ -16,6 +27,46 @@ export function replacePlaceholdersInQueryString(question: Question) {
       );
     }
   }
+
+  return question;
+}
+
+export function addAppendix(question: Question) {
+  if (!question.selected || !question.selected.appendixDataviews) {
+    return question;
+  }
+
+  if (question.selected.appendixDataviews) {
+    question.selected.appendixDataviews.forEach((ap) => {
+      question.selected.dataview += " " + ap;
+    });
+  }
+  return question;
+}
+
+export function enhanceWithAppendix(
+  question: Question,
+  index: number,
+  questions: Array<Question>
+) {
+  if (!question || !question.appendix || !question.selected) return question;
+
+  let appI;
+  if (question.appendix.startsWith(".")) {
+    const relative = Number(question.appendix.substring(1));
+    appI = index + relative;
+  } else {
+    appI = Number(question.appendix);
+  }
+  replacePlaceholdersInQueryString(question, false);
+  if (questions[appI].selected) {
+    if (!questions[appI].selected.appendixDataviews) {
+      questions[appI].selected.appendixDataviews = [];
+    }
+    questions[appI].selected.appendixDataviews[index] =
+      question.selected.dataview;
+  }
+
   return question;
 }
 

@@ -1,6 +1,6 @@
 # Basic Dataview Query builder
 
-## 🧱 [Click here to access the Basic Query Builder!](https://s-blu.github.io/basic-dataview-query-builder/) 🧱 
+## 🧱 [Click here to access the Basic Query Builder!](https://s-blu.github.io/basic-dataview-query-builder/) 🧱
 
 ## What is this?
 
@@ -16,7 +16,7 @@ If you find a bug, have a question or would like to see another feature, feel fr
 
 **If you want to use the basic dataview query builder, click the link at the very top of this information!** The following information is for developing and customizing the basic dataview query.
 
-This page is based on a Vue 3 application built with Vite, styled with [Bulma.io](https://bulma.io). 
+This page is based on a Vue 3 application built with Vite, styled with [Bulma.io](https://bulma.io).
 
 ### Questions JSON
 
@@ -24,19 +24,21 @@ The questions of the Basic Query Builder are stored in a .json for easy maintain
 
 The JSON contains an **Array** with **Question objects**.
 
-#### Object structures 
+#### Object structures
 
 **Question**
+
 ```
 question: string // The question itself
 subtitle: string // Subtitle or Category of the question, shown in the navigation (desktop only)
 condition: ConditionString // (optional) If present, determines based on the available queryParts if the question should be asked or not
+appendix: IndexString // (optional) If present, will add the dataview of this questions answer to the existing one specified here
 answers: AnswerOption[] // array of all available answers
 ```
 
 **Condition String**
 
-A condition string is a normal string that needs to follow a convention. It checks if the given words are part of the query (case sensitive) and helps decide if the conditioned question is relevant to ask or not. The condition is always executed on the raw dataview, without variable (user input) replacement. 
+A condition string is a normal string that needs to follow a convention. It checks if the given words are part of the query (case sensitive) and helps decide if the conditioned question is relevant to ask or not. The condition is always executed on the raw dataview, without variable (user input) replacement.
 
 - `WORD` Mandatory Word. Needs to be present.
 - `-WORD` Forbidden word. Cannot be present.
@@ -49,6 +51,18 @@ _Examples_
 - `TABLE -GROUP` Question will be shown if TABLE is present and GROUP is not.
 - `TABLE FLATTEN -GROUP~LIMIT` Question will be shown if TABLE and FLATTEN is available, but GROUP or LIMIT are not.
 - `LIST~TABLE~TASK FLATTEN -GROUP` Question will be shown if FLATTEN and LIST or TABLE or TASK are available and GROUP is not.
+
+**Index String**
+
+Gives either a absolute or a relative index. To mark a index as relative to the current question, add a `.` in front.
+
+_Examples_
+
+- `2` refers to the third question (array index 2) in the questions array
+- `0` refers to the first question
+- `-1` refers to the last question
+- `.-1` refers to the question right before this question
+- `.2` refers to the second question that comes after this question
 
 **Answeroptions**
 
@@ -64,7 +78,7 @@ extras: AnswerOptionExtras[] // (optional) additional UI elements associated wit
 Renders a text input field that can be used to replace placeholders in the answeroptions dataview.
 
 ```
-type: "input" // type of extra. 
+type: "input" // type of extra.
 label: string // label of the input field
 variabletype: string // (optional) type of variable to perform specific operations on input. Currently available: metadata
 varname: string // variable name used in the dataview string of the answer that should be replaced with this input value
@@ -75,11 +89,10 @@ varname: string // variable name used in the dataview string of the answer that 
 Displays a message box/notification with some custom text that can give hints or additional context.
 
 ```
-type: "hint" // type of extra. 
+type: "hint" // type of extra.
 title: string // (optional) Title of the message box
 message: string // message of the message box
 ```
-
 
 ### Recommended IDE Setup
 
@@ -92,10 +105,9 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
 
 ### Project Setup
 

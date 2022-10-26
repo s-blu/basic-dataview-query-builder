@@ -4,6 +4,8 @@ import type { AnswerOption, Question } from "./../interfaces/question";
 import {
   replacePlaceholdersInQueryString,
   handleGroupByCommand,
+  enhanceWithAppendix,
+  addAppendix,
 } from "@/utilities/dataviewQuery.utility";
 import { doesFulfillCondition } from "@/utilities/conditionString.utility";
 
@@ -26,13 +28,12 @@ export const useQuestionsStore = defineStore("questionsStore", {
       }
 
       let tempIndex = state.currentQuestionIndex;
-
       while (
+        tempIndex < state.questionsLength - 1 &&
         !doesFulfillCondition(
           state.queryParts,
-          state.questions[tempIndex].condition
-        ) &&
-        tempIndex < state.questionsLength - 1
+          state.questions[tempIndex]?.condition
+        )
       ) {
         tempIndex++;
       }
@@ -40,9 +41,10 @@ export const useQuestionsStore = defineStore("questionsStore", {
       return tempIndex + 1 === state.questionsLength;
     },
     computedQueryParts: (state) => {
-      const queryParts = state.questions.map((q) =>
-        replacePlaceholdersInQueryString(q)
-      );
+      const queryParts = state.questions
+        .map((q, i) => enhanceWithAppendix(q, i, state.questions)) //FIXME this should not be a map but somekind of tap
+        .map((q) => replacePlaceholdersInQueryString(q))
+        .map((q) => addAppendix(q));
 
       handleGroupByCommand(queryParts);
 
@@ -57,11 +59,6 @@ export const useQuestionsStore = defineStore("questionsStore", {
   },
   actions: {
     moveForward() {
-      console.log(
-        "move forward",
-        this.currentQuestion,
-        this.currentQuestionIndex
-      );
       let tempIndex = this.currentQuestionIndex + 1;
 
       while (

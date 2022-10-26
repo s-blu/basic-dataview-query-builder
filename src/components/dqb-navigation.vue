@@ -23,7 +23,6 @@ export default {
   methods: {
     ...mapActions(useQuestionsStore, ["moveForward", "moveBack"]),
     next() {
-      console.log("nextttt");
       if (this.isLastQuestion) {
         this.$router.push("/result");
       } else {
