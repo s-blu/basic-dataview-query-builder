@@ -4,7 +4,7 @@ import type { AnswerOption, Question } from "./../interfaces/question";
 import {
   replacePlaceholdersInQueryString,
   handleGroupByCommand,
-  enhanceWithAppendix,
+  enhanceWithAppendixes,
   addAppendix,
 } from "@/utilities/dataviewQuery.utility";
 import { doesFulfillCondition } from "@/utilities/conditionString.utility";
@@ -41,8 +41,9 @@ export const useQuestionsStore = defineStore("questionsStore", {
       return tempIndex + 1 === state.questionsLength;
     },
     computedQueryParts: (state) => {
+      enhanceWithAppendixes(state.questions);
+
       const queryParts = state.questions
-        .map((q, i) => enhanceWithAppendix(q, i, state.questions)) //FIXME this should not be a map but somekind of tap
         .map((q) => replacePlaceholdersInQueryString(q))
         .map((q) => addAppendix(q));
 

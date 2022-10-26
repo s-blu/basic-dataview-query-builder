@@ -44,30 +44,30 @@ export function addAppendix(question: Question) {
   return question;
 }
 
-export function enhanceWithAppendix(
-  question: Question,
-  index: number,
-  questions: Array<Question>
-) {
-  if (!question || !question.appendix || !question.selected) return question;
+export function enhanceWithAppendixes(questions: Array<Question>) {
+  if (!questions) return;
 
-  let appI;
-  if (question.appendix.startsWith(".")) {
-    const relative = Number(question.appendix.substring(1));
-    appI = index + relative;
-  } else {
-    appI = Number(question.appendix);
-  }
-  replacePlaceholdersInQueryString(question, false);
-  if (questions[appI].selected) {
-    if (!questions[appI].selected.appendixDataviews) {
-      questions[appI].selected.appendixDataviews = [];
+  questions.forEach((question, i) => {
+    if (!question.appendix || !question.selected) return;
+
+    let appI;
+    if (question.appendix.startsWith(".")) {
+      const relative = Number(question.appendix.substring(1));
+      appI = i + relative;
+    } else {
+      appI = Number(question.appendix);
     }
-    questions[appI].selected.appendixDataviews[index] =
-      question.selected.dataview;
-  }
 
-  return question;
+    replacePlaceholdersInQueryString(question, false);
+    if (questions[appI].selected) {
+      if (!questions[appI].selected.appendixDataviews) {
+        questions[appI].selected.appendixDataviews = [];
+      }
+
+      questions[appI].selected.appendixDataviews[i] =
+        question.selected.dataview;
+    }
+  });
 }
 
 export function handleGroupByCommand(questions: Array<Question>) {
