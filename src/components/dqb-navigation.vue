@@ -26,7 +26,10 @@ export default {
       if (this.isLastQuestion) {
         this.$router.push("/result");
       } else {
-        this.moveForward();
+        const moved = this.moveForward();
+        if (!moved) {
+          this.$router.push("/result");
+        }
       }
     },
   },

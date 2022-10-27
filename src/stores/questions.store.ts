@@ -63,15 +63,19 @@ export const useQuestionsStore = defineStore("questionsStore", {
       let tempIndex = this.currentQuestionIndex + 1;
 
       while (
-        tempIndex < this.questionsLength - 1 &&
         !doesFulfillCondition(
           this.queryParts,
-          this.questions[tempIndex].condition
+          this.questions[tempIndex]?.condition
         )
       ) {
         tempIndex++;
       }
-      this.currentQuestionIndex = tempIndex;
+      if (tempIndex < this.questionsLength) {
+        this.currentQuestionIndex = tempIndex;
+        return true;
+      }
+
+      return false;
     },
     moveBack() {
       if (this.currentQuestionIndex === 0) return;
