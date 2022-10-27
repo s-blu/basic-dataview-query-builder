@@ -1,10 +1,22 @@
 import type { Question } from "./../interfaces/question";
-export function replacePlaceholdersInQueryString(question: Question) {
-  if (!question.selected?.variables || !question.selected?.dataview) {
+import { doesFulfillCondition } from "./conditionString.utility";
+export function replacePlaceholdersInQueryString(
+  question: Question,
+  ignoreAppendixQuestions = true
+) {
+  if (!question.selected) {
+    return question;
+  }
+  if (question.appendix && ignoreAppendixQuestions) {
+    question.selected.dataview = "";
+    return question;
+  }
+  question.selected.dataview = question.selected.rawDataview;
+
+  if (!question.selected.variables) {
     return question;
   }
 
-  question.selected.dataview = question.selected.rawDataview;
   const placeholders = question.selected.dataview.matchAll(/{{([^}]+)?}}/g);
 
   for (const match of placeholders) {
@@ -16,7 +28,66 @@ export function replacePlaceholdersInQueryString(question: Question) {
       );
     }
   }
+
   return question;
+}
+
+export function addAppendix(question: Question) {
+  if (!question.selected || !question.selected.appendixDataviews) {
+    return question;
+  }
+
+  if (question.selected.appendixDataviews) {
+    question.selected.appendixDataviews.forEach((ap) => {
+      question.selected.dataview += " " + ap;
+    });
+  }
+  return question;
+}
+
+export function enhanceWithAppendixes(
+  questions: Array<Question>,
+  queryParts: string[]
+) {
+  if (!questions) return;
+
+  questions.forEach((question, i) => {
+    if (!question.appendix || !question.selected) return;
+
+    const appI = determineAppendixId(question, i);
+    if (
+      question.condition &&
+      !doesFulfillCondition(queryParts, question.condition)
+    ) {
+      if (questions[appI].selected?.appendixDataviews) {
+        questions[appI].selected.appendixDataviews[i] = null;
+      }
+      return;
+    }
+
+    replacePlaceholdersInQueryString(question, false);
+    if (questions[appI].selected) {
+      if (!questions[appI].selected.appendixDataviews) {
+        questions[appI].selected.appendixDataviews = [];
+      }
+
+      questions[appI].selected.appendixDataviews[i] =
+        question.selected.dataview;
+    }
+  });
+}
+
+export function determineAppendixId(question: Question, i: number) {
+  if (!question?.appendix) return i;
+
+  let appI;
+  if (question.appendix.startsWith(".")) {
+    const relative = Number(question.appendix.substring(1));
+    appI = i + relative;
+  } else {
+    appI = Number(question.appendix);
+  }
+  return appI;
 }
 
 export function handleGroupByCommand(questions: Array<Question>) {

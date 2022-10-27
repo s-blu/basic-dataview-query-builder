@@ -1,7 +1,11 @@
 export interface Question {
   question: string;
+  subtitle: string;
   answers: Array<AnswerOption>;
   selected: SelectedAnswer;
+  multiselect?: string;
+  condition?: string;
+  appendix?: string;
 }
 
 export interface SelectedAnswer {
@@ -11,6 +15,7 @@ export interface SelectedAnswer {
 
   rawDataview?: string;
   variables?: { [id: string]: string };
+  appendixDataviews?: string[];
 }
 
 export interface AnswerOption {

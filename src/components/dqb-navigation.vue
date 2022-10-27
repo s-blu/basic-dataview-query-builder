@@ -1,28 +1,36 @@
 <script lang="ts">
 import { useQuestionsStore } from "@/stores/questions.store";
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 import DqbRouterButton from "./dqb-routerButton.vue";
 
 export default {
+  props: ["hideSubtitle"],
   computed: {
-    ...mapState(useQuestionsStore, ["questionsLength", "questions"]),
-    next() {
-      const currentIndex: number = Number(this.$route.params.id);
-      return currentIndex < this.questionsLength
-        ? `/question/${currentIndex + 1}`
-        : "/result";
-    },
-    previous() {
-      const currentIndex: number = Number(this.$route.params.id);
-      return currentIndex === 1 ? "" : `/question/${currentIndex - 1}`;
-    },
+    ...mapState(useQuestionsStore, [
+      "questionsLength",
+      "questions",
+      "currentQuestionIndex",
+      "currentQuestion",
+      "isLastQuestion",
+    ]),
     isFirstQuestion() {
-      return Number(this.$route.params.id) === 1;
+      return this.currentQuestionIndex === 0;
     },
     currentAnswer() {
-      return (
-        (this.questions[Number(this.$route.params.id) - 1] || {}).selected || {}
-      );
+      return this.currentQuestion.selected || {};
+    },
+  },
+  methods: {
+    ...mapActions(useQuestionsStore, ["moveForward", "moveBack"]),
+    next() {
+      if (this.isLastQuestion) {
+        this.$router.push("/result");
+      } else {
+        const moved = this.moveForward();
+        if (!moved) {
+          this.$router.push("/result");
+        }
+      }
     },
   },
   components: { DqbRouterButton },
@@ -33,7 +41,7 @@ export default {
   <nav class="navigation columns is-mobile">
     <div class="column">
       <dqb-router-button
-        :to="previous"
+        @clicked="moveBack()"
         :disabled="isFirstQuestion"
         disabledBecause="No previous questions available"
       >
@@ -44,16 +52,16 @@ export default {
       </dqb-router-button>
     </div>
     <div class="questionprogress column is-centered is-hidden-touch">
-      Question {{ Number($route.params.id) }} / {{ questionsLength }}
+      <span v-if="!hideSubtitle">{{ currentQuestion.subtitle }}</span>
     </div>
     <div class="column">
       <dqb-router-button
-        :to="next"
+        @clicked="next()"
         :disabled="currentAnswer.dataview === undefined"
         disabledBecause="Please select an answer first!"
         class="is-pulled-right"
       >
-        <span>{{ next === "/result" ? "Show result" : "Next" }}</span>
+        <span>{{ isLastQuestion ? "Show result" : "Next" }}</span>
         <span class="icon">
           <i class="fa-solid fa-arrow-right"></i>
         </span>

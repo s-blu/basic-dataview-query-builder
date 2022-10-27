@@ -8,15 +8,12 @@ import DqbAnsweroptionExtras from "./dqb-answeroption-extras.vue";
 export default {
   components: { DqbAnsweroption, DqbAnsweroptionExtras },
   computed: {
-    ...mapState(useQuestionsStore, ["questions"]),
-    question(): Question {
-      return this.questions[this.$route.params.id - 1];
-    },
+    ...mapState(useQuestionsStore, ["questions", "currentQuestion"]),
   },
   methods: {
     ...mapActions(useQuestionsStore, ["setSelected"]),
     selectAnswer(answer: AnswerOption, index: number) {
-      this.setSelected(this.question, index, answer);
+      this.setSelected(this.currentQuestion, index, answer);
     },
   },
 };
@@ -27,23 +24,25 @@ export default {
     <div class="column is-full">
       <div class="questionblock">
         <div class="header">Question</div>
-        <div class="question">{{ question.question }}</div>
+        <div class="question">{{ currentQuestion.question }}</div>
       </div>
     </div>
     <div class="answerblock column is-full">
       <div class="header">
-        {{ question.multiselect ? "Choose one or multiple" : "Choose one" }}
+        {{
+          currentQuestion.multiselect ? "Choose one or multiple" : "Choose one"
+        }}
       </div>
       <div
         class="answers"
-        v-for="(answer, index) in question.answers"
+        v-for="(answer, index) in currentQuestion.answers"
         :key="index"
       >
         <DqbAnsweroption
           :answer="answer"
           :index="index"
-          :isSelected="question.selected?.index === index"
-          :isMultiselect="question.multiselect"
+          :isSelected="currentQuestion.selected?.index === index"
+          :isMultiselect="currentQuestion.multiselect"
           @selected="selectAnswer(answer, index)"
         ></DqbAnsweroption>
       </div>
@@ -52,9 +51,9 @@ export default {
   <div class="columns">
     <div class="answeroption-extras column is-full">
       <DqbAnsweroptionExtras
-        v-if="question.selected?.index"
-        :question="question"
-        :answer="question.answers[question.selected?.index]"
+        v-if="currentQuestion.selected?.index"
+        :question="currentQuestion"
+        :answer="currentQuestion.answers[currentQuestion.selected?.index]"
       ></DqbAnsweroptionExtras>
     </div>
   </div>

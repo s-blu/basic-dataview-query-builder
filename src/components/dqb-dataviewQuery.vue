@@ -1,25 +1,37 @@
 <script lang="ts">
 import { useQuestionsStore } from "@/stores/questions.store";
+import { determineAppendixId } from "@/utilities/dataviewQuery.utility";
 import { mapState } from "pinia";
 
 export default {
+  props: {
+    showHighlight: String,
+  },
   computed: {
     ...mapState(useQuestionsStore, [
       "queryParts",
       "computedQuery",
       "computedQueryParts",
+      "currentQuestionIndex",
+      "currentQuestion",
     ]),
     queryString() {
       return `\`\`\`dataview
-${this.computedQuery}
+${this.computedQuery.trim()}
 \`\`\``;
     },
     queryParts() {
-      if (this.computedQueryParts.length < Number(this.$route.params.id)) {
-        console.log([...this.computedQueryParts, ""]);
-        return [...this.computedQueryParts, ""];
+      if (!this.showHighlight) {
+        return this.computedQueryParts.filter((p) => p);
+      } else {
+        return this.computedQueryParts;
       }
-      return this.computedQueryParts;
+    },
+    activeIndex() {
+      return determineAppendixId(
+        this.currentQuestion,
+        this.currentQuestionIndex
+      );
     },
   },
   methods: {
@@ -43,7 +55,7 @@ ${this.computedQuery}
     <container v-for="(part, index) in queryParts" :key="index">
       <p
         v-if="part"
-        :class="{ active: Number($route.params.id) === index + 1 }"
+        :class="{ active: activeIndex === index && showHighlight }"
       >
         {{ part }}
       </p>
