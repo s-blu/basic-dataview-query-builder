@@ -31,9 +31,10 @@ The JSON contains an **Array** with **Question objects**.
 ```
 question: string // The question itself
 subtitle: string // Subtitle or Category of the question, shown in the navigation (desktop only)
+answers: AnswerOption[] // array of all available answers
+multiselect: string // (optional) If present, makes one to many answers choosable. They'll be concatinated with the given multiselect string
 condition: ConditionString // (optional) If present, determines based on the available queryParts if the question should be asked or not
 appendix: IndexString // (optional) If present, will add the dataview of this questions answer to the existing one specified here
-answers: AnswerOption[] // array of all available answers
 ```
 
 **Condition String**

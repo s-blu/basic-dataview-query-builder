@@ -41,7 +41,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
       return tempIndex + 1 === state.questionsLength;
     },
     computedQueryParts: (state) => {
-      enhanceWithAppendixes(state.questions);
+      enhanceWithAppendixes(state.questions, state.queryParts);
 
       const queryParts = state.questions
         .map((q) => replacePlaceholdersInQueryString(q))
@@ -63,6 +63,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
       let tempIndex = this.currentQuestionIndex + 1;
 
       while (
+        tempIndex < this.questionsLength - 1 &&
         !doesFulfillCondition(
           this.queryParts,
           this.questions[tempIndex].condition

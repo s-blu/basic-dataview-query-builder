@@ -55,8 +55,23 @@
     ]
   },
   {
-    "question": "Do you want to include all notes in your vault or just those from a particular folder/tag/link?",
+    "question": "",
+    "subtitle": "",
+    "answers": [
+      {
+        "label": "",
+        "dataview": "",
+        "readmore": ""
+      }
+    ]
+  },
+  {
+    "question": "Do you want to include all notes in your vault or only those from a particular folder/tag/link?",
     "subtitle": "Page sources",
+    "multiselect": {
+      "concat": " AND ",
+      "start": "FROM "
+    },
     "answers": [
       {
         "label": "I want to query all notes",
@@ -91,6 +106,10 @@
         "dataview": "FROM \"{{path/to/folderName}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
+          {
+            "type": "hint",
+            "message": "Give the path starting from and exclusive your vault folder, separated by slashes (/)"
+          },
           {
             "type": "input",
             "label": "Path to folder from vault root",
@@ -143,7 +162,7 @@
         "dataview": ""
       },
       {
-        "label": "Yes, I only want to see notes where a particular field exists",
+        "label": "I only want to see notes where a particular field exists",
         "dataview": "WHERE {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where",
         "extras": [
@@ -156,7 +175,7 @@
       },
       {
         "label": "I only want to see notes where a particular field equals a certain value (number, string, date, etc)",
-        "dataview": "WHERE {{nameOfField}} = \"{{value}}\"",
+        "dataview": "WHERE {{nameOfField}} =",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where",
         "extras": [
           {
@@ -164,11 +183,6 @@
             "label": "Name of field",
             "variabletype": "metadata",
             "varname": "nameOfField"
-          },
-          {
-            "type": "input",
-            "label": "Value to check for",
-            "varname": "value"
           }
         ]
       },
@@ -197,6 +211,66 @@
     ]
   },
   {
+    "question": "Against which value type you want to compare?",
+    "subtitle": "Field Type Compare",
+    "condition": "WHERE =",
+    "appendix": ".-1",
+    "answers": [
+      {
+        "label": "I want to compare to a number",
+        "dataview": "{{value}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Number to check against",
+            "varname": "value"
+          }
+        ]
+      },
+      {
+        "label": "I want to compare to a text value",
+        "dataview": "\"{{value}}\"",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Text to check against",
+            "varname": "value"
+          }
+        ]
+      },
+      {
+        "label": "I want to compare to a date",
+        "dataview": "date(\"{{value}}\")",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/#dates",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "Specify the date you want to compare against in ISO format, i.e. 2020-05-30 or 2020-12-24T18:00. Click the ? icon on the answer option to see more input possibilities."
+          },
+          {
+            "type": "input",
+            "label": "Date to check against",
+            "varname": "value"
+          }
+        ]
+      },
+      {
+        "label": "I want to compare to a note link",
+        "dataview": "[[{{value}}]]",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Name of file to check against",
+            "varname": "value"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "question": "How do you want the results sorted?",
     "subtitle": "Sorting",
     "answers": [
@@ -205,18 +279,18 @@
         "dataview": ""
       },
       {
-        "label": "Based on the note name, in alphabetical order",
-        "dataview": "SORT file.name asc",
+        "label": "Based on the note name",
+        "dataview": "SORT file.name",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
       },
       {
-        "label": "Based on the note's creation date, newest to oldest",
-        "dataview": "SORT file.ctime desc",
+        "label": "Based on the note's creation date",
+        "dataview": "SORT file.ctime",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
       },
       {
-        "label": "Based on my own metadata field, in ascending order",
-        "dataview": "SORT {{nameOfField}} asc",
+        "label": "Based on my own metadata field",
+        "dataview": "SORT {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#sort",
         "extras": [
           {
@@ -243,16 +317,35 @@
     ]
   },
   {
+    "question": "In which direction you want your results sorted?",
+    "subtitle": "Sort Direction",
+    "condition": "SORT",
+    "appendix": ".-1",
+    "answers": [
+      {
+        "label": "Ascending (A-Z, 0-9, oldest to newest)",
+        "dataview": "ASC",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+      },
+      {
+        "label": "Descending (Z-A, 9-0, newest to oldest)",
+        "dataview": "DESC",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+      }
+    ]
+  },
+  {
     "question": "Do you want similar results grouped together based on one of their metadata values?",
     "subtitle": "Grouping",
+    "condition": "-TASK",
     "answers": [
       {
         "label": "No, I want one result line per note",
         "dataview": ""
       },
       {
-        "label": "Yes, based on the file they came from (default behaviour, except on TASK queries)",
-        "dataview": "GROUP BY file.link",
+        "label": "Group based on the folder they belong to.",
+        "dataview": "GROUP BY file.folder",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
@@ -262,8 +355,23 @@
         ]
       },
       {
-        "label": "Yes, based on the month they were created.",
-        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\") AS Created",
+        "label": "Group based on the tags they have.",
+        "dataview": "FLATTEN file.etags AS tags \n GROUP BY tags",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          },
+          {
+            "type": "hint",
+            "message": "The tags of a file are a multivalue field. When grouping after a multivalue field, you need to FLATTEN it first, so that every single value of the multivalue field becomes its own group."
+          }
+        ]
+      },
+      {
+        "label": "Group based on the month they were created.",
+        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
@@ -273,7 +381,7 @@
         ]
       },
       {
-        "label": "Yes, based on my own metadata field",
+        "label": "Group based on my own single value metadata field",
         "dataview": "GROUP BY {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
         "extras": [
@@ -286,6 +394,124 @@
           {
             "type": "hint",
             "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Group based on my own multi value metadata field",
+        "dataview": "FLATTEN {{nameOfField}} AS groups \n GROUP BY groups",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Field name to group after",
+            "variabletype": "metadata",
+            "varname": "nameOfField"
+          },
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          },
+          {
+            "type": "hint",
+            "message": "When grouping after a multivalue field, you need to FLATTEN it first, so that every single value of the multivalue field becomes its own group."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you want similar results grouped together based on one of their metadata values?",
+    "subtitle": "Grouping",
+    "condition": "TASK",
+    "answers": [
+      {
+        "label": "No, I want one result line per note",
+        "dataview": ""
+      },
+      {
+        "label": "Yes, based on the file they came from",
+        "dataview": "GROUP BY file.link",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Group based on the folder they belong to.",
+        "dataview": "GROUP BY file.folder",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Group based on the tags they have.",
+        "dataview": "FLATTEN file.etags AS tags \n GROUP BY tags",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          },
+          {
+            "type": "hint",
+            "message": "The tags of a file are a multivalue field. When grouping after a multivalue field, you need to FLATTEN it first, so that every single value of the multivalue field becomes its own group."
+          }
+        ]
+      },
+      {
+        "label": "Group based on the month they were created.",
+        "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Group based on my own single value metadata field",
+        "dataview": "GROUP BY {{nameOfField}}",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Field name to group after",
+            "variabletype": "metadata",
+            "varname": "nameOfField"
+          },
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          }
+        ]
+      },
+      {
+        "label": "Group based on my own multi value metadata field",
+        "dataview": "FLATTEN {{nameOfField}} AS groups \n GROUP BY groups",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "extras": [
+          {
+            "type": "input",
+            "label": "Field name to group after",
+            "variabletype": "metadata",
+            "varname": "nameOfField"
+          },
+          {
+            "type": "hint",
+            "message": "After grouping, you need to prepend a 'rows.' to all fields you want to have as output and all data commands that come after GROUP BY. The Query Builder does take care of that for you."
+          },
+          {
+            "type": "hint",
+            "message": "When grouping after a multivalue field, you need to FLATTEN it first, so that every single value of the multivalue field becomes its own group."
           }
         ]
       }

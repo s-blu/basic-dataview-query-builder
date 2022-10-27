@@ -1,4 +1,5 @@
 import type { Question } from "./../interfaces/question";
+import { doesFulfillCondition } from "./conditionString.utility";
 export function replacePlaceholdersInQueryString(
   question: Question,
   ignoreAppendixQuestions = true
@@ -44,13 +45,25 @@ export function addAppendix(question: Question) {
   return question;
 }
 
-export function enhanceWithAppendixes(questions: Array<Question>) {
+export function enhanceWithAppendixes(
+  questions: Array<Question>,
+  queryParts: string[]
+) {
   if (!questions) return;
 
   questions.forEach((question, i) => {
     if (!question.appendix || !question.selected) return;
 
     const appI = determineAppendixId(question, i);
+    if (
+      question.condition &&
+      !doesFulfillCondition(queryParts, question.condition)
+    ) {
+      if (questions[appI].selected?.appendixDataviews) {
+        questions[appI].selected.appendixDataviews[i] = null;
+      }
+      return;
+    }
 
     replacePlaceholdersInQueryString(question, false);
     if (questions[appI].selected) {

@@ -1,10 +1,11 @@
 export interface Question {
   question: string;
   subtitle: string;
-  condition?: string;
-  appendix?: string;
   answers: Array<AnswerOption>;
   selected: SelectedAnswer;
+  multiselect?: string;
+  condition?: string;
+  appendix?: string;
 }
 
 export interface SelectedAnswer {
