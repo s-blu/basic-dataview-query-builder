@@ -55,23 +55,8 @@
     ]
   },
   {
-    "question": "",
-    "subtitle": "",
-    "answers": [
-      {
-        "label": "",
-        "dataview": "",
-        "readmore": ""
-      }
-    ]
-  },
-  {
     "question": "Do you want to include all notes in your vault or only those from a particular folder/tag/link?",
     "subtitle": "Page sources",
-    "multiselect": {
-      "concat": " AND ",
-      "start": "FROM "
-    },
     "answers": [
       {
         "label": "I want to query all notes",
@@ -356,7 +341,7 @@
       },
       {
         "label": "Group based on the tags they have.",
-        "dataview": "FLATTEN file.etags AS tags \n GROUP BY tags",
+        "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
@@ -399,7 +384,7 @@
       },
       {
         "label": "Group based on my own multi value metadata field",
-        "dataview": "FLATTEN {{nameOfField}} AS groups \n GROUP BY groups",
+        "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
@@ -453,7 +438,7 @@
       },
       {
         "label": "Group based on the tags they have.",
-        "dataview": "FLATTEN file.etags AS tags \n GROUP BY tags",
+        "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
@@ -496,7 +481,7 @@
       },
       {
         "label": "Group based on my own multi value metadata field",
-        "dataview": "FLATTEN {{nameOfField}} AS groups \n GROUP BY groups",
+        "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
         "extras": [
           {
