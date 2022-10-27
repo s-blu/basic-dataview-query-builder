@@ -4,6 +4,9 @@ import { determineAppendixId } from "@/utilities/dataviewQuery.utility";
 import { mapState } from "pinia";
 
 export default {
+  props: {
+    showHighlight: String,
+  },
   computed: {
     ...mapState(useQuestionsStore, [
       "queryParts",
@@ -14,15 +17,15 @@ export default {
     ]),
     queryString() {
       return `\`\`\`dataview
-${this.computedQuery}
+${this.computedQuery.trim()}
 \`\`\``;
     },
     queryParts() {
-      if (this.computedQueryParts.length < Number(this.currentQuestionIndex)) {
-        console.log([...this.computedQueryParts, ""]);
-        return [...this.computedQueryParts, ""];
+      if (!this.showHighlight) {
+        return this.computedQueryParts.filter((p) => p);
+      } else {
+        return this.computedQueryParts;
       }
-      return this.computedQueryParts;
     },
     activeIndex() {
       return determineAppendixId(
@@ -50,7 +53,10 @@ ${this.computedQuery}
     </button>
     <p>```dataview</p>
     <container v-for="(part, index) in queryParts" :key="index">
-      <p v-if="part" :class="{ active: activeIndex === index }">
+      <p
+        v-if="part"
+        :class="{ active: activeIndex === index && showHighlight }"
+      >
         {{ part }}
       </p>
     </container>

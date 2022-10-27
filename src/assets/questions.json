@@ -549,5 +549,28 @@
         ]
       }
     ]
+  },
+  {
+    "question": "Do you want to see an additional information alongside your groups on your LIST?",
+    "condition": "LIST GROUP",
+    "appendix": "0",
+    "subtitle": "Additional List Field",
+    "answers": [
+      {
+        "label": "No, I only want to see my groups",
+        "dataview": "",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+      },
+      {
+        "label": "I want to see all note links belonging to this group",
+        "dataview": "file.link",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+      },
+      {
+        "label": "I want to see all note names belonging to this group",
+        "dataview": "file.name",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+      }
+    ]
   }
 ]

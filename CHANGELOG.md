@@ -1,10 +1,11 @@
 # Changelog
 
-## v1.1.1
+## v1.2.0
 
 - Add explanation about question.json to README
 - Duplicate navigation buttons after the question for easier navigation
-- 
+- Add conditional questions that are only shown when the query fulfills a condition
+- Add appendix functionality that add dataview to an existing row instead of creating a new one
 
 ## v1.1.0
 
