@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.1 
+
+- Fix #21 - answer option extras weren't loaded on first answer option
+- Enhance wording of questions and app (Thanks Denise!)
+
 ## v1.2.0
 
 - Add explanation about question.json to README
