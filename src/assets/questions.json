@@ -1,21 +1,21 @@
 [
   {
-    "question": "In which form you want to see the results of your query?",
+    "question": "How do you want to see the results of your query?",
     "subtitle": "Query Type",
     "answers": [
       {
-        "label": "I want to have a LIST of file links matching my query",
+        "label": "I want to have a LIST of note links matching my query",
         "dataview": "LIST",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
       },
       {
-        "label": "I want to have a TABLE that presents my results as file links with additional data for each hit",
+        "label": "I want to have a TABLE of my note links with additional data as columns for each result",
         "dataview": "TABLE {{tablecolumns}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#table-queries",
         "extras": [
           {
             "type": "hint",
-            "message": "Please give a comma separated list of meta data you would like to see in your table alongside the file link of your hit (or the group key, if you later decide to group). "
+            "message": "Please give a comma separated list of meta data that represents each column."
           },
           {
             "type": "hint",
@@ -30,19 +30,19 @@
         ]
       },
       {
-        "label": "I want to have an interactive TASK list that summarises my tasks",
+        "label": "I want to have a TASK list that summarizes my tasks",
         "dataview": "TASK",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#task-queries"
       },
       {
         "type": "input",
-        "label": "I want to see a CALENDAR which shows each hit as a dot",
+        "label": "I want to see a CALENDAR which shows each note as a dot",
         "dataview": "CALENDAR {{datefield}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
         "extras": [
           {
             "type": "hint",
-            "message": "Each page that should be displayed with a CALENDAR view needs a valid date meta data field. Otherwise, the query won't render. Good picks are i.e. file.ctime or file.mtime. The date meta data field determines on which day the note gets displayed."
+            "message": "Each note needs a valid date meta data field to show in CALENDAR view, otherwise the query won't render. Good picks are i.e. file.ctime or file.mtime. The date meta data field determines on which day the note gets displayed."
           },
           {
             "type": "input",
@@ -55,15 +55,15 @@
     ]
   },
   {
-    "question": "Do you want to include all notes in your vault or only those from a particular folder/tag/link?",
+    "question": "Do you want to include all notes in your vault or only those from a particular source?",
     "subtitle": "Page sources",
     "answers": [
       {
-        "label": "I want to query all notes",
+        "label": "I want to include all notes",
         "dataview": ""
       },
       {
-        "label": "I only want to query notes that have a particular tag",
+        "label": "I only want to show notes that have a particular tag",
         "dataview": "FROM #{{tagName}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
@@ -75,7 +75,7 @@
         ]
       },
       {
-        "label": "I only want to query notes inside a specific root-level folder (and its subfolders)",
+        "label": "I only want to show notes inside a specific root-level folder (and its subfolders)",
         "dataview": "FROM \"{{folderName}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
@@ -87,7 +87,7 @@
         ]
       },
       {
-        "label": "I only want to query notes inside a specific subfolder",
+        "label": "I only want to show notes inside a specific subfolder",
         "dataview": "FROM \"{{path/to/folderName}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
@@ -103,17 +103,17 @@
         ]
       },
       {
-        "label": "I only want to query notes that link to my current note",
+        "label": "I only want to show notes that link to my current note",
         "dataview": "FROM [[]]",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I only want to query notes that my current note links to",
+        "label": "I only want to show notes that my current note links to",
         "dataview": "FROM outgoing([[]])",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
       },
       {
-        "label": "I only want to query notes that link to a specific note",
+        "label": "I only want to show notes that link to a specific note",
         "dataview": "FROM [[{{NoteName}}]]",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
@@ -125,7 +125,7 @@
         ]
       },
       {
-        "label": "I only want to query notes that are linked to from a specific note",
+        "label": "I only want to show notes that are linked to from a specific note",
         "dataview": "FROM outgoing([[{{NoteName}}]])",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
         "extras": [
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "question": "Do you want to filter your results further based on one of your metadata fields?",
+    "question": "Do you want to filter your results further based on the notes metadata?",
     "subtitle": "Filter pages",
     "answers": [
       {
@@ -511,7 +511,7 @@
         "dataview": ""
       },
       {
-        "label": "Just the first few matching results",
+        "label": "Show me only the first few matching results",
         "dataview": "LIMIT {{numberOfResults}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#limit",
         "extras": [

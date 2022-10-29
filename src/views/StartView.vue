@@ -6,9 +6,8 @@
       <div class="header">Welcome to the Basic Dataview Query Builder!</div>
       <div class="msg">
         The Basic Dataview Query Builder will guide you through some questions
-        and put together a dataview query based on your answers. Either use this
-        query as-is in your vault or as a starting point to refine it further to
-        build a more advanced query. <br />
+        and put together a dataview query based on your answers. You can use this
+        query as-is in your vault or as a starting point to refine a more advanced query. <br />
         The goal is to help you on your first dataview queries and to give you a
         better understanding of the syntax and needed information to build
         dataview queries from scratch.
@@ -25,10 +24,10 @@
       <div class="msg">
         <a href="https://blacksmithgu.github.io/obsidian-dataview/">Dataview</a>
         is a popular community plugin for the Personal Knowledge Management
-        software <a href="https://obsidian.md">Obsidian.md</a>, both brilliant
+        software <a href="https://obsidian.md">Obsidian.md</a>, which are both brilliant
         and highly flexible applications that can be a bit difficult to
         understand in the beginning. <br />
-        To make your start into dataview a tad more easier, the Basic Dataview
+        To make your start into dataview a tad easier, the Basic Dataview
         Query Builder (this very webpage) allows you to click together your
         first queries that'll help you understand the syntax of the plugin and
         guide you through the different pieces of information needed to build a

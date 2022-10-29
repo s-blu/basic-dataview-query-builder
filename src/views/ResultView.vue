@@ -26,8 +26,7 @@ export default {
           Congratulations to your new dataview query! Your next steps:
           <ol class="next-steps">
             <li>
-              Copy the query below - make sure to copy the whole block (with the
-              backticks) by i.e. using the copy button on the right.
+              Use the copy button to the right to copy the query below.
             </li>
             <li>Paste it into a note of your choice in your vault.</li>
             <li>
