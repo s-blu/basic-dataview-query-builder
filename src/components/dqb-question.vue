@@ -42,7 +42,6 @@ export default {
           :answer="answer"
           :index="index"
           :isSelected="currentQuestion.selected?.index === index"
-          :isMultiselect="currentQuestion.multiselect"
           @selected="selectAnswer(answer, index)"
         ></DqbAnsweroption>
       </div>
@@ -51,7 +50,7 @@ export default {
   <div class="columns">
     <div class="answeroption-extras column is-full">
       <DqbAnsweroptionExtras
-        v-if="currentQuestion.selected?.index"
+        v-if="currentQuestion.selected"
         :question="currentQuestion"
         :answer="currentQuestion.answers[currentQuestion.selected?.index]"
       ></DqbAnsweroptionExtras>
