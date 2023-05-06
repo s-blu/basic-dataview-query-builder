@@ -285,19 +285,6 @@
             "varname": "nameOfField"
           }
         ]
-      },
-      {
-        "label": "Based on my own metadata field, in descending order",
-        "dataview": "SORT {{nameOfField}} desc",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#sort",
-        "extras": [
-          {
-            "type": "input",
-            "label": "Field name to sort after",
-            "variabletype": "metadata",
-            "varname": "nameOfField"
-          }
-        ]
       }
     ]
   },
