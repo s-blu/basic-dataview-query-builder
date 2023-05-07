@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.2
+
+- Removed duplicated answeroption from "How do you want the results sorted?"
+- Update dependencies
+
 ## v1.2.1 
 
 - Fix #21 - answer option extras weren't loaded on first answer option
