@@ -52,14 +52,14 @@ ${this.computedQuery.trim()}
       <span class="icon"> <i class="fa-regular fa-copy"></i></span>
     </button>
     <p>```dataview</p>
-    <container v-for="(part, index) in queryParts" :key="index">
+    <template v-for="(part, index) in queryParts" :key="index">
       <p
         v-if="part"
         :class="{ active: activeIndex === index && showHighlight }"
       >
         {{ part }}
       </p>
-    </container>
+    </template>
     <p>```</p>
   </div>
 </template>

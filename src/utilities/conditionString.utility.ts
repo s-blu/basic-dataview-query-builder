@@ -28,7 +28,7 @@ export function parseConditionString(conStr: string) {
 
 export function doesFulfillCondition(
   rawDataviewParts: any[],
-  conditionString: string
+  conditionString?: string
 ) {
   if (!conditionString) {
     return true;
