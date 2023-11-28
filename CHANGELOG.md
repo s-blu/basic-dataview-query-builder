@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+
+- Update dependencies
+
 ## v1.2.2
 
 - Removed duplicated answeroption from "How do you want the results sorted?"
