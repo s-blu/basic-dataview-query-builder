@@ -1,5 +1,6 @@
 import type { Question } from "./../interfaces/question";
 import { doesFulfillCondition } from "./conditionString.utility";
+
 export function replacePlaceholdersInQueryString(
   question: Question,
   ignoreAppendixQuestions = true
@@ -11,23 +12,21 @@ export function replacePlaceholdersInQueryString(
     question.selected.dataview = "";
     return question;
   }
-  question.selected.dataview = question.selected.rawDataview;
 
   if (!question.selected.variables) {
     return question;
   }
 
-  const placeholders = question.selected.dataview.matchAll(/{{([^}]+)?}}/g);
+  const placeholders = question.selected.rawDataview.matchAll(/{{([^}]+)?}}/g);
 
+  let newDataview = question.selected.rawDataview;
   for (const match of placeholders) {
     const replacement = question.selected.variables[match[1]];
     if (replacement) {
-      question.selected.dataview = question.selected.dataview.replace(
-        match[0],
-        replacement
-      );
+      newDataview = newDataview.replace(match[0], replacement);
     }
   }
+  question.selected.dataview = newDataview;
 
   return question;
 }
@@ -37,11 +36,16 @@ export function addAppendix(question: Question) {
     return question;
   }
 
+  let newDataview = question.selected.dataview;
   if (question.selected.appendixDataviews) {
     question.selected.appendixDataviews.forEach((ap) => {
-      question.selected.dataview += " " + ap;
+      if (ap) {
+        newDataview += " " + ap;
+      }
     });
   }
+
+  question.selected.dataview = newDataview;
   return question;
 }
 
