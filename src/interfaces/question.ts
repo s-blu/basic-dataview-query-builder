@@ -13,9 +13,9 @@ export interface SelectedAnswer {
   index: number;
   answer: AnswerOption;
 
-  rawDataview?: string;
+  rawDataview: string;
   variables?: { [id: string]: string };
-  appendixDataviews?: string[];
+  appendixDataviews?: Array<string | null>;
 }
 
 export interface AnswerOption {
