@@ -6,12 +6,12 @@
       {
         "label": "I want to have a LIST of note links matching my query",
         "dataview": "LIST",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list"
       },
       {
         "label": "I want to have a TABLE of my note links with additional data as columns for each result",
         "dataview": "TABLE {{tablecolumns}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#table-queries",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#table",
         "extras": [
           {
             "type": "hint",
@@ -32,13 +32,13 @@
       {
         "label": "I want to have a TASK list that summarizes my tasks",
         "dataview": "TASK",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#task-queries"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#task"
       },
       {
         "type": "input",
         "label": "I want to see a CALENDAR which shows each note as a dot",
         "dataview": "CALENDAR {{datefield}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#calendar-queries",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#calendar",
         "extras": [
           {
             "type": "hint",
@@ -65,7 +65,7 @@
       {
         "label": "I only want to show notes that have a particular tag",
         "dataview": "FROM #{{tagName}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from",
         "extras": [
           {
             "type": "input",
@@ -77,7 +77,7 @@
       {
         "label": "I only want to show notes inside a specific root-level folder (and its subfolders)",
         "dataview": "FROM \"{{folderName}}\"",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from",
         "extras": [
           {
             "type": "input",
@@ -89,7 +89,7 @@
       {
         "label": "I only want to show notes inside a specific subfolder",
         "dataview": "FROM \"{{path/to/folderName}}\"",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from",
         "extras": [
           {
             "type": "hint",
@@ -105,17 +105,17 @@
       {
         "label": "I only want to show notes that link to my current note",
         "dataview": "FROM [[]]",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from"
       },
       {
         "label": "I only want to show notes that my current note links to",
         "dataview": "FROM outgoing([[]])",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from"
       },
       {
         "label": "I only want to show notes that link to a specific note",
         "dataview": "FROM [[{{NoteName}}]]",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from",
         "extras": [
           {
             "type": "input",
@@ -127,7 +127,7 @@
       {
         "label": "I only want to show notes that are linked to from a specific note",
         "dataview": "FROM outgoing([[{{NoteName}}]])",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#from",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#from",
         "extras": [
           {
             "type": "input",
@@ -149,7 +149,7 @@
       {
         "label": "I only want to see notes where a particular field exists",
         "dataview": "WHERE {{nameOfField}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#where",
         "extras": [
           {
             "type": "input",
@@ -160,8 +160,8 @@
       },
       {
         "label": "I only want to see notes where a particular field equals a certain value (number, string, date, etc)",
-        "dataview": "WHERE {{nameOfField}} =",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#where",
+        "dataview": "WHERE {{nameOfField}} = ",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#where",
         "extras": [
           {
             "type": "input",
@@ -174,7 +174,7 @@
       {
         "label": "I only want to see notes where a particular field contains certain value (inside an array, or as part of a string)",
         "dataview": "WHERE contains({{nameOfMetadata}}, \"{{value}}\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#containsobjectliststring-value",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/functions/#containsobjectliststring-value",
         "extras": [
           {
             "type": "hint",
@@ -204,7 +204,7 @@
       {
         "label": "I want to compare to a number",
         "dataview": "{{value}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
         "extras": [
           {
             "type": "input",
@@ -216,7 +216,7 @@
       {
         "label": "I want to compare to a text value",
         "dataview": "\"{{value}}\"",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
         "extras": [
           {
             "type": "input",
@@ -228,7 +228,7 @@
       {
         "label": "I want to compare to a date",
         "dataview": "date(\"{{value}}\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/#dates",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/#dates",
         "extras": [
           {
             "type": "hint",
@@ -244,7 +244,7 @@
       {
         "label": "I want to compare to a note link",
         "dataview": "[[{{value}}]]",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/literals/",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
         "extras": [
           {
             "type": "input",
@@ -266,17 +266,17 @@
       {
         "label": "Based on the note name",
         "dataview": "SORT file.name",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
       },
       {
         "label": "Based on the note's creation date",
         "dataview": "SORT file.ctime",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
       },
       {
         "label": "Based on my own metadata field",
         "dataview": "SORT {{nameOfField}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#sort",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/functions/#sortlist",
         "extras": [
           {
             "type": "input",
@@ -297,12 +297,12 @@
       {
         "label": "Ascending (A-Z, 0-9, oldest to newest)",
         "dataview": "ASC",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
       },
       {
         "label": "Descending (Z-A, 9-0, newest to oldest)",
         "dataview": "DESC",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
       }
     ]
   },
@@ -318,7 +318,7 @@
       {
         "label": "Group based on the folder they belong to.",
         "dataview": "GROUP BY file.folder",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -329,7 +329,7 @@
       {
         "label": "Group based on the tags they have.",
         "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -344,7 +344,7 @@
       {
         "label": "Group based on the month they were created.",
         "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -355,7 +355,7 @@
       {
         "label": "Group based on my own single value metadata field",
         "dataview": "GROUP BY {{nameOfField}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "input",
@@ -372,7 +372,7 @@
       {
         "label": "Group based on my own multi value metadata field",
         "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "input",
@@ -404,7 +404,7 @@
       {
         "label": "Yes, based on the file they came from",
         "dataview": "GROUP BY file.link",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -415,7 +415,7 @@
       {
         "label": "Group based on the folder they belong to.",
         "dataview": "GROUP BY file.folder",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -426,7 +426,7 @@
       {
         "label": "Group based on the tags they have.",
         "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -441,7 +441,7 @@
       {
         "label": "Group based on the month they were created.",
         "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "hint",
@@ -452,7 +452,7 @@
       {
         "label": "Group based on my own single value metadata field",
         "dataview": "GROUP BY {{nameOfField}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/functions/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "input",
@@ -469,7 +469,7 @@
       {
         "label": "Group based on my own multi value metadata field",
         "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
         "extras": [
           {
             "type": "input",
@@ -500,7 +500,7 @@
       {
         "label": "Show me only the first few matching results",
         "dataview": "LIMIT {{numberOfResults}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#limit",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#limit",
         "extras": [
           {
             "type": "input",
@@ -520,12 +520,12 @@
       {
         "label": "No, I only want to see my file links",
         "dataview": "",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list"
       },
       {
         "label": "Show a meta data value alongside the file links",
         "dataview": "{{listfield}}",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#list-queries",
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list",
         "extras": [
           {
             "type": "input",
@@ -546,17 +546,17 @@
       {
         "label": "No, I only want to see my groups",
         "dataview": "",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
       },
       {
         "label": "I want to see all note links belonging to this group",
         "dataview": "file.link",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
       },
       {
         "label": "I want to see all note names belonging to this group",
         "dataview": "file.name",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/query/queries/#group"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
       }
     ]
   }
