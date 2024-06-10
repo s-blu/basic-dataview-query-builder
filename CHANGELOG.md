@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.4
+
+- Update dependencies
+- Fix recursive change detections that got introduced while updating dependencies
+- Fix Links to documentation
+
 ## 1.2.3
 
 - Update dependencies
