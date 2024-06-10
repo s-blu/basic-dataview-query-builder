@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import cloneDeep from "lodash.clonedeep";
 import initalQuestions from "@/assets/questions.json";
 import type { AnswerOption, Question } from "./../interfaces/question";
 import {
@@ -32,7 +33,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
         tempIndex < state.questionsLength - 1 &&
         !doesFulfillCondition(
           state.queryParts,
-          state.questions[tempIndex]?.condition
+          state.questions[tempIndex]?.condition,
         )
       ) {
         tempIndex++;
@@ -41,9 +42,10 @@ export const useQuestionsStore = defineStore("questionsStore", {
       return tempIndex + 1 === state.questionsLength;
     },
     computedQueryParts: (state) => {
-      enhanceWithAppendixes(state.questions, state.queryParts);
+      const questions = cloneDeep(state.questions);
+      enhanceWithAppendixes(questions, state.queryParts);
 
-      const queryParts = state.questions
+      const queryParts = questions
         .map((q) => replacePlaceholdersInQueryString(q))
         .map((q) => addAppendix(q));
 
@@ -54,7 +56,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
     computedQuery: (state) => {
       return state.computedQueryParts.reduce(
         (acc, curr) => (curr ? `${acc}${acc ? "\n" : ""}${curr}` : acc),
-        ""
+        "",
       );
     },
   },
@@ -65,7 +67,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
       while (
         !doesFulfillCondition(
           this.queryParts,
-          this.questions[tempIndex]?.condition
+          this.questions[tempIndex]?.condition,
         )
       ) {
         tempIndex++;
@@ -85,7 +87,7 @@ export const useQuestionsStore = defineStore("questionsStore", {
       while (
         !doesFulfillCondition(
           this.queryParts,
-          this.questions[tempIndex].condition
+          this.questions[tempIndex].condition,
         )
       ) {
         tempIndex--;
@@ -107,12 +109,12 @@ export const useQuestionsStore = defineStore("questionsStore", {
     updateAnswerVariableMap(
       question: Question,
       variableName: string,
-      value: string
+      value: string,
     ): void {
       if (!question.selected) {
         console.error(
           "Cannot update variable map for non existing selected answer",
-          question
+          question,
         );
       }
       if (!question.selected?.variables) {
