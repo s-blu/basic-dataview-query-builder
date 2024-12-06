@@ -65,13 +65,13 @@ ${this.computedQuery.trim()}
 </template>
 
 <style scoped lang="scss">
-@import "src/assets/mixins.scss";
+@use "src/assets/mixins";
 .dataview-query {
   font-size: var(--size-font-info);
   font-family: Menlo, SFMono-Regular, Consolas, "Roboto Mono", "Source Code Pro",
     monospace;
 
-  @include box;
+  @include mixins.box;
   padding: 0 20px;
   background-color: #baccde;
 

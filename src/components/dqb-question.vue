@@ -59,15 +59,15 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "src/assets/mixins.scss";
+@use "src/assets/mixins";
 
 .questionblock {
-  @include box;
+  @include mixins.box;
   height: 100%;
   font-size: var(--size-font-info);
 }
 .header {
-  @include heading;
+  @include mixins.heading;
   padding-bottom: 0.5em;
 }
 

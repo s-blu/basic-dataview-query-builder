@@ -50,17 +50,17 @@
 </template>
 
 <style scoped lang="scss">
-@import "src/assets/mixins.scss";
+@use "src/assets/mixins";
 
 main {
   max-width: 960px;
 }
 .header {
-  @include heading;
+  @include mixins.heading;
 }
 
 .welcomemsg {
-  @include box;
+  @include mixins.box;
   font-size: 15pt;
 }
 
@@ -72,6 +72,6 @@ main {
 
 .wotisthis {
   margin-top: 2em;
-  @include box;
+  @include mixins.box;
 }
 </style>

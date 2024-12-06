@@ -74,7 +74,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "src/assets/mixins.scss";
+@use "src/assets/mixins";
 
 main {
   max-width: 960px;
@@ -82,11 +82,11 @@ main {
 
 .result-msg,
 .help {
-  @include box;
+  @include mixins.box;
   font-size: 15pt;
 
   .header {
-    @include heading;
+    @include mixins.heading;
   }
 
   .next-steps {
@@ -95,7 +95,7 @@ main {
 }
 
 .queryheading {
-  @include heading;
+  @include mixins.heading;
   margin-bottom: 0.5em;
 }
 
