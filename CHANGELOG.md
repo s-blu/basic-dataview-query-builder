@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+- Update dependencies
+- Enhance app structure to possibly enable rudimentary accessibility
+
 ## 1.2.5
 
 - Update dependencies
