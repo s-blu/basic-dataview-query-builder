@@ -29,14 +29,10 @@ export default {
 
 <template>
   <div class="answer">
-    <span
-      @click="selectAnswer"
-      class="icon answer-select"
-      :class="{ multi: isMultiselect }"
-    >
-      <i v-if="isSelected" class="fa-solid fa-check"></i>
-    </span>
-    <span @click="selectAnswer" class="answerlabel">{{ answer.label }}</span>
+    <label>
+      <input type="radio" :checked="isSelected" @click="selectAnswer"/>
+      <span @click="selectAnswer" class="answerlabel">{{ answer.label }}</span>
+    </label>
     <a
       v-if="answer.readmore"
       class="button is-ghost readmore-btn"
@@ -54,14 +50,7 @@ export default {
 
 <style scoped lang="scss">
 .answer-select {
-  border: 2px solid var(--color-text-hint);
-  border-radius: 50%;
   cursor: pointer;
-  min-width: 24px;
-
-  &.multi {
-    border-radius: 2px;
-  }
 
   &.icon {
     color: var(--color-text-hint);

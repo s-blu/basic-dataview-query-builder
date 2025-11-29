@@ -46,6 +46,7 @@ ${this.computedQuery.trim()}
   <div class="dataview-query">
     <button
       class="button is-ghost copybtn"
+      aria-label="Copy Query"
       title="Copy Query"
       @click="copyQuery()"
     >
