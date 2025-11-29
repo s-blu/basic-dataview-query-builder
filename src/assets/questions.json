@@ -175,6 +175,7 @@
         "label": "I only want to see notes where a particular field contains certain value (inside an array, or as part of a string)",
         "dataview": "WHERE contains({{nameOfMetadata}}, \"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/functions/#containsobjectliststring-value",
+        "readmorelabel": "Read more about function contain",
         "extras": [
           {
             "type": "hint",
@@ -205,6 +206,7 @@
         "label": "I want to compare to a number",
         "dataview": "{{value}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
+        "readmorelabel": "Read more about literals",
         "extras": [
           {
             "type": "input",
@@ -217,6 +219,7 @@
         "label": "I want to compare to a text value",
         "dataview": "\"{{value}}\"",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
+        "readmorelabel": "Read more about literals",
         "extras": [
           {
             "type": "input",
@@ -229,6 +232,7 @@
         "label": "I want to compare to a date",
         "dataview": "date(\"{{value}}\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/#dates",
+        "readmorelabel": "Read more about date literals",
         "extras": [
           {
             "type": "hint",
@@ -245,6 +249,7 @@
         "label": "I want to compare to a note link",
         "dataview": "[[{{value}}]]",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/reference/literals/",
+        "readmorelabel": "Read more about literals",
         "extras": [
           {
             "type": "input",
@@ -297,12 +302,14 @@
       {
         "label": "Ascending (A-Z, 0-9, oldest to newest)",
         "dataview": "ASC",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort",
+        "readmorelabel": "Read more about SORT"
       },
       {
         "label": "Descending (Z-A, 9-0, newest to oldest)",
         "dataview": "DESC",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#sort",
+        "readmorelabel": "Read more about SORT"
       }
     ]
   },
@@ -319,6 +326,7 @@
         "label": "Group based on the folder they belong to.",
         "dataview": "GROUP BY file.folder",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -330,6 +338,7 @@
         "label": "Group based on the tags they have.",
         "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -345,6 +354,7 @@
         "label": "Group based on the month they were created.",
         "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -356,6 +366,7 @@
         "label": "Group based on my own single value metadata field",
         "dataview": "GROUP BY {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "input",
@@ -373,6 +384,7 @@
         "label": "Group based on my own multi value metadata field",
         "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "input",
@@ -405,6 +417,7 @@
         "label": "Yes, based on the file they came from",
         "dataview": "GROUP BY file.link",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -416,6 +429,7 @@
         "label": "Group based on the folder they belong to.",
         "dataview": "GROUP BY file.folder",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -427,6 +441,7 @@
         "label": "Group based on the tags they have.",
         "dataview": "FLATTEN file.etags AS tags GROUP BY tags",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -442,6 +457,7 @@
         "label": "Group based on the month they were created.",
         "dataview": "GROUP BY dateformat(file.ctime, \"yyyy-MM\")",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "hint",
@@ -453,6 +469,7 @@
         "label": "Group based on my own single value metadata field",
         "dataview": "GROUP BY {{nameOfField}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "input",
@@ -470,6 +487,7 @@
         "label": "Group based on my own multi value metadata field",
         "dataview": "FLATTEN {{nameOfField}} AS groups GROUP BY groups",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY",
         "extras": [
           {
             "type": "input",
@@ -520,12 +538,14 @@
       {
         "label": "No, I only want to see my file links",
         "dataview": "",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list",
+        "readmorelabel": "Read more about LIST"
       },
       {
         "label": "Show a meta data value alongside the file links",
         "dataview": "{{listfield}}",
         "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/query-types/#list",
+        "readmorelabel": "Read more about LIST",
         "extras": [
           {
             "type": "input",
@@ -546,17 +566,20 @@
       {
         "label": "No, I only want to see my groups",
         "dataview": "",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY"
       },
       {
         "label": "I want to see all note links belonging to this group",
         "dataview": "file.link",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY"
       },
       {
         "label": "I want to see all note names belonging to this group",
         "dataview": "file.name",
-        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by"
+        "readmore": "https://blacksmithgu.github.io/obsidian-dataview/queries/data-commands/#group-by",
+        "readmorelabel": "Read more about GROUP BY"
       }
     ]
   }

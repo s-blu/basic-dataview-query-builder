@@ -6,6 +6,19 @@ export default {
     isSelected: Boolean,
     isMultiselect: Boolean,
   },
+  computed: {
+    readmorelabel() {
+      if (this.answer?.readmorelabel) {
+        return this.answer?.readmorelabel;
+      } else {
+        const dataviewQuery = this.answer?.dataview?.split(" ");
+        if (!dataviewQuery[0]?.startsWith("{")) {
+          return `Learn more about ${dataviewQuery[0]}`
+        }
+        return `Visit Documentation` 
+      }
+    }
+  },
   methods: {
     selectAnswer() {
       this.$emit("selected", this.index);
@@ -27,7 +40,8 @@ export default {
     <a
       v-if="answer.readmore"
       class="button is-ghost readmore-btn"
-      title="Visit documentation"
+      :aria-label="readmorelabel"
+      :title="readmorelabel"
       :href="answer.readmore"
       target="_blank"
     >
