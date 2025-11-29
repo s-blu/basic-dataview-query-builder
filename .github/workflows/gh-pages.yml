@@ -13,11 +13,11 @@ jobs:
       - name: Create Node Environment
         uses: actions/setup-node@v1
         with: 
-          node-version: 18.x
+          node-version: 22.x
       
       - name: Install and build project
         run: |
-          npm install
+          npm clean-install
           npm run build-only
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
