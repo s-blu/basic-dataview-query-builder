@@ -74,7 +74,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@use "src/assets/mixins";
+@use "../assets/mixins";
 
 main {
   max-width: 960px;

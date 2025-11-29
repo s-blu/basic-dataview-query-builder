@@ -71,7 +71,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@use "src/assets/mixins";
+@use "../assets/mixins";
 .questionprogress {
   text-align: center;
   @include mixins.heading;

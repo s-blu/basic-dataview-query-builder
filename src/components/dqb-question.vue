@@ -59,7 +59,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@use "src/assets/mixins";
+@use "../assets/mixins";
 
 .questionblock {
   @include mixins.box;

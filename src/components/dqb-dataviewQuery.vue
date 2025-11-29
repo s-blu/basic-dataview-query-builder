@@ -65,7 +65,7 @@ ${this.computedQuery.trim()}
 </template>
 
 <style scoped lang="scss">
-@use "src/assets/mixins";
+@use "../assets/mixins";
 .dataview-query {
   font-size: var(--size-font-info);
   font-family: Menlo, SFMono-Regular, Consolas, "Roboto Mono", "Source Code Pro",
